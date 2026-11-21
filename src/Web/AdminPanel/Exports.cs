@@ -39,5 +39,14 @@ public static class Exports
 
     private static IEnumerable<string> AdminPanelScripts => [];
 
-    private static IEnumerable<string> AdminPanelStylesheets => [];
+    private static IEnumerable<string> AdminPanelStylesheets
+    {
+        get
+        {
+            // Loaded after the shared stylesheets (Bootstrap, theme.css, ...), so the design tokens can override them.
+            var prefix = $"_content/{typeof(Exports).Namespace}";
+            yield return $"{prefix}/css/tokens.css";
+            yield return $"{prefix}/css/admin-theme.css";
+        }
+    }
 }

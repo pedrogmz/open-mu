@@ -1,0 +1,722 @@
+/* Admin panel skin: maps Bootstrap 5.3 and the existing --omu-* variables onto the design tokens (--mu-*) of tokens.css.
+ * The tokens switch with [data-bs-theme], which theme.js already maintains, so this file holds no per-theme colors
+ * except the few "-rgb" triplets that Bootstrap needs for its rgba() utilities.
+ */
+
+/* ---------- Derived tokens (not measured, computed from the measured ones) ---------- */
+:root {
+  /* The reference has almost no contrast between text and text-muted; tables and forms need a readable secondary text. */
+  --mu-color-text-dim: color-mix(in srgb, var(--mu-color-text) 62%, transparent);
+  --mu-color-primary-hover: color-mix(in srgb, var(--mu-color-primary) 86%, var(--mu-color-bg));
+  --mu-focus-ring: 0 0 0 3px color-mix(in srgb, var(--mu-color-primary) 22%, transparent);
+}
+
+/* ---------- Bootstrap and --omu-* variables ---------- */
+:root,
+[data-bs-theme="light"],
+[data-bs-theme="dark"] {
+  --bs-body-font-family: var(--mu-font-sans);
+  --bs-body-font-size: var(--mu-text-body-size);
+  --bs-body-line-height: var(--mu-text-body-leading);
+  --bs-body-color: var(--mu-color-text);
+  --bs-body-bg: var(--mu-color-bg);
+  --bs-emphasis-color: var(--mu-color-text);
+  --bs-heading-color: var(--mu-color-text);
+  --bs-secondary-color: var(--mu-color-text-dim);
+  --bs-tertiary-color: var(--mu-color-text-dim);
+  --bs-secondary-bg: var(--mu-color-surface-2);
+  --bs-tertiary-bg: var(--mu-color-surface);
+  --bs-border-color: var(--mu-color-border-strong);
+  --bs-border-color-translucent: var(--mu-color-border);
+  --bs-border-radius: var(--mu-radius-control);
+  --bs-border-radius-sm: var(--mu-radius-sm);
+  --bs-border-radius-lg: var(--mu-radius-lg);
+  --bs-border-radius-xl: var(--mu-radius-xl);
+  --bs-border-radius-xxl: var(--mu-radius-panel);
+  --bs-border-radius-pill: var(--mu-radius-full);
+  --bs-box-shadow-sm: var(--mu-shadow-sm);
+  --bs-box-shadow: var(--mu-shadow-md);
+  --bs-box-shadow-lg: var(--mu-shadow-lg);
+  --bs-link-color: var(--mu-color-info);
+  --bs-link-hover-color: var(--mu-color-text);
+  --bs-primary: var(--mu-color-primary);
+  --bs-primary-text-emphasis: var(--mu-color-text);
+  --bs-primary-bg-subtle: var(--mu-color-primary-soft);
+  --bs-primary-border-subtle: var(--mu-color-border-strong);
+  --bs-success-text-emphasis: var(--mu-color-success);
+  --bs-success-bg-subtle: var(--mu-color-success-soft);
+  --bs-success-border-subtle: var(--mu-color-success-soft);
+  --bs-warning-text-emphasis: var(--mu-color-warning);
+  --bs-warning-bg-subtle: var(--mu-color-warning-soft);
+  --bs-warning-border-subtle: var(--mu-color-warning-soft);
+  --bs-danger-text-emphasis: var(--mu-color-danger);
+  --bs-danger-bg-subtle: var(--mu-color-danger-soft);
+  --bs-danger-border-subtle: var(--mu-color-danger-soft);
+  --bs-info-text-emphasis: var(--mu-color-info);
+  --bs-info-bg-subtle: var(--mu-color-info-soft);
+  --bs-info-border-subtle: var(--mu-color-info-soft);
+  --bs-secondary-text-emphasis: var(--mu-color-text-dim);
+  --bs-secondary-bg-subtle: var(--mu-color-surface-sunken);
+  --bs-secondary-border-subtle: var(--mu-color-border);
+  --bs-light-bg-subtle: var(--mu-color-surface-2);
+  --bs-dark-bg-subtle: var(--mu-color-surface-3);
+  --bs-focus-ring-color: color-mix(in srgb, var(--mu-color-primary) 22%, transparent);
+  --bs-form-valid-color: var(--mu-color-success);
+  --bs-form-valid-border-color: var(--mu-color-success);
+  --bs-form-invalid-color: var(--mu-color-danger);
+  --bs-form-invalid-border-color: var(--mu-color-danger);
+
+  --omu-bg: var(--mu-color-bg);
+  --omu-surface: var(--mu-color-surface-overlay);
+  --omu-surface-2: var(--mu-color-surface-overlay);
+  --omu-surface-muted: var(--mu-color-surface-2);
+  --omu-surface-hover: var(--mu-color-primary-soft);
+  --omu-text: var(--mu-color-text);
+  --omu-text-muted: var(--mu-color-text-dim);
+  --omu-text-secondary: var(--mu-color-text-secondary);
+  --omu-border: var(--mu-color-border);
+  --omu-link: var(--mu-color-info);
+  --omu-link-primary: var(--mu-color-primary);
+  --omu-link-primary-border: var(--mu-color-primary);
+  --omu-mark-bg: var(--mu-color-warning-soft);
+  --omu-error-bg: var(--mu-color-surface-overlay);
+  --omu-error-text: var(--mu-color-danger);
+  --omu-sidebar-gradient: var(--mu-gradient-sidebar-sheen);
+  --omu-nav-link: var(--mu-color-menu-item-text);
+  --omu-spinner-dot: var(--mu-color-primary);
+}
+
+/* Triplets for Bootstrap's rgba(var(--bs-*-rgb), x) utilities; values of tokens.css written as r, g, b. */
+:root,
+[data-bs-theme="light"] {
+  --bs-body-bg-rgb: 188, 188, 188;
+  --bs-body-color-rgb: 25, 25, 25;
+  --bs-primary-rgb: 30, 30, 30;
+  --bs-tertiary-bg-rgb: 255, 255, 255;
+  --bs-success-rgb: 27, 106, 64;
+  --bs-warning-rgb: 131, 80, 11;
+  --bs-danger-rgb: 163, 54, 31;
+  --bs-info-rgb: 34, 87, 140;
+}
+
+[data-bs-theme="dark"] {
+  --bs-body-bg-rgb: 38, 38, 38;
+  --bs-body-color-rgb: 246, 246, 246;
+  --bs-primary-rgb: 239, 239, 239;
+  --bs-tertiary-bg-rgb: 66, 66, 66;
+  --bs-success-rgb: 166, 224, 185;
+  --bs-warning-rgb: 243, 207, 147;
+  --bs-danger-rgb: 248, 176, 162;
+  --bs-info-rgb: 180, 210, 239;
+}
+
+/* ---------- Base ---------- */
+html,
+body {
+  font-family: var(--mu-font-sans);
+}
+
+body {
+  background: var(--mu-gradient-veil) fixed, var(--mu-color-bg);
+  font-weight: var(--mu-text-body-weight);
+}
+
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
+  font-weight: var(--mu-fw-semibold);
+  letter-spacing: var(--mu-text-h2-tracking);
+  line-height: var(--mu-text-h2-leading);
+}
+
+h1, .h1 {
+  font-size: clamp(var(--mu-fs-4xl), 1.4rem + 1vw, var(--mu-text-h1-size));
+  letter-spacing: var(--mu-text-h1-tracking);
+  line-height: var(--mu-text-h1-leading);
+}
+
+h2, .h2 { font-size: var(--mu-fs-3xl); }
+h3, .h3 { font-size: var(--mu-fs-2xl); }
+h4, .h4 { font-size: var(--mu-text-h3-size); }
+h5, .h5 { font-size: var(--mu-fs-lg); }
+h6, .h6 { font-size: var(--mu-fs-base); }
+
+small, .small, .form-text {
+  font-size: var(--mu-text-caption-size);
+}
+
+a {
+  text-underline-offset: 2px;
+}
+
+/* ---------- Frame: glass sidebar inset from the viewport, content in a rounded panel ---------- */
+@media (min-width: 768px) {
+  .page {
+    gap: var(--mu-grid-gap);
+    padding: var(--mu-frame-inset);
+  }
+
+  .sidebar {
+    position: sticky;
+    top: var(--mu-frame-inset);
+    align-self: flex-start;
+    height: calc(100vh - 2 * var(--mu-frame-inset));
+  }
+
+  .sidebar > nav {
+    width: var(--mu-sidebar-width);
+    height: 100%;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .content {
+    margin-bottom: var(--mu-frame-inset);
+  }
+}
+
+.sidebar > nav {
+  background-color: var(--mu-color-sidebar);
+  background-image: var(--mu-gradient-sidebar-sheen);
+  border-radius: var(--mu-radius-panel) !important;
+  box-shadow: var(--mu-shadow-card) !important;
+  padding: var(--mu-sidebar-padding);
+}
+
+.sidebar .navbar-brand {
+  color: var(--mu-color-text);
+  font-size: var(--mu-fs-xl);
+  font-weight: var(--mu-fw-bold);
+  letter-spacing: var(--mu-text-h1-tracking);
+}
+
+/* Overrides Bootstrap's px-3 utility of the markup; global (not scoped) so the items of ConfigNavMenu get it too. */
+.sidebar .nav-item {
+  padding-inline: 0 !important;
+  padding-bottom: 2px;
+}
+
+.sidebar .nav-link {
+  color: var(--mu-color-menu-item-text);
+  font-size: var(--mu-text-menu-item-size);
+  font-weight: var(--mu-text-menu-item-weight);
+  border-radius: var(--mu-radius-menu-item);
+  height: var(--mu-menu-item-height);
+  line-height: var(--mu-text-menu-item-leading);
+  padding: 0 var(--mu-space-3);
+  transition: background-color 0.2s var(--mu-ease), color 0.2s var(--mu-ease);
+}
+
+.sidebar .nav-link:hover {
+  background-color: var(--mu-color-primary-soft);
+  color: var(--mu-color-text);
+}
+
+.sidebar .nav-link.active {
+  background-color: var(--mu-color-menu-item-active-bg);
+  color: var(--mu-color-menu-item-active-text);
+  box-shadow: var(--mu-shadow-button);
+}
+
+/* Expanded groups (System, Inspect, ...) are nested in the sidebar instead of floating, so they stay transparent. */
+:root .sidebar > nav > div > ul > li.dropdown > div {
+  background-color: transparent;
+  border: 0;
+  box-shadow: none;
+  padding: var(--mu-space-1) 0 var(--mu-space-1) var(--mu-space-3);
+  margin: 0;
+}
+
+:root .sidebar > nav > div > ul > li.dropdown > div > a {
+  color: var(--mu-color-menu-item-text);
+  border-radius: var(--mu-radius-sm);
+  font-size: var(--mu-text-menu-item-size);
+  padding: var(--mu-space-2) var(--mu-space-3);
+}
+
+:root .sidebar > nav > div > ul > li.dropdown > div > a:hover,
+:root .sidebar > nav > div > ul > li.dropdown > div > a:focus,
+:root .sidebar > nav > div > ul > li.dropdown > div > a.active {
+  background-color: var(--mu-color-primary-soft);
+  color: var(--mu-color-text);
+}
+
+:root .sidebar > nav > div > ul > li.dropdown > div > a.active {
+  font-weight: var(--mu-fw-semibold);
+}
+
+.culture-selector::before {
+  background: var(--mu-color-border);
+}
+
+/* ---------- Top bar: glass panel with a pill search field, round icon buttons and the user controls ---------- */
+.main-header {
+  min-height: var(--mu-topbar-height);
+  padding: 0;
+  border-radius: var(--mu-radius-panel);
+  box-shadow: var(--mu-shadow-card);
+  isolation: isolate;
+}
+
+/* The glass lives on a pseudo element: a backdrop-filter on the header itself would make it the containing block
+   of fixed descendants, e.g. the full-screen backdrop which closes the theme menu. */
+.main-header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background-color: var(--mu-color-sidebar);
+  background-image: var(--mu-gradient-sidebar-sheen);
+  backdrop-filter: blur(var(--mu-glass-blur)) saturate(var(--mu-glass-saturate));
+}
+
+@media (min-width: 768px) {
+  .main-header {
+    top: var(--mu-frame-inset);
+  }
+}
+
+.main-header > .container-fluid {
+  padding-inline: var(--mu-space-3) !important;
+}
+
+/* Search: icon and input merged into one pill. */
+.main-header .configuration-search-container {
+  flex-wrap: nowrap;
+  height: var(--mu-control-height);
+  background-color: var(--mu-color-control-bg);
+  border-radius: var(--mu-radius-full);
+  box-shadow: var(--mu-shadow-control-inset);
+  transition: box-shadow 0.2s var(--mu-ease);
+}
+
+.main-header .configuration-search-container:focus-within {
+  box-shadow: var(--mu-shadow-control-inset), var(--mu-focus-ring);
+}
+
+.main-header .configuration-search-container > .input-group-text,
+.main-header .configuration-search-container > .form-control {
+  background-color: transparent;
+  border: 0;
+  box-shadow: none;
+  height: 100%;
+}
+
+.main-header .configuration-search-container > .input-group-text {
+  padding-inline: var(--mu-space-4) var(--mu-space-1);
+  color: var(--mu-color-text-dim);
+}
+
+.main-header .configuration-search-container > .input-group-text:last-child {
+  padding-inline: var(--mu-space-1) var(--mu-space-4);
+}
+
+.main-header .configuration-search-container > .form-control {
+  padding-left: var(--mu-space-2);
+  font-size: var(--mu-text-menu-item-size);
+}
+
+/* Icon buttons (theme selector): round glass controls with the measured control height. */
+.main-header .theme-selector .theme-selector__toggle {
+  width: var(--mu-control-height);
+  height: var(--mu-control-height);
+  color: var(--mu-color-text);
+  background-color: var(--mu-color-control-bg);
+  box-shadow: var(--mu-shadow-control-inset);
+  border-radius: var(--mu-radius-full);
+}
+
+.main-header .theme-selector .theme-selector__toggle:hover,
+.main-header .theme-selector .theme-selector__toggle:focus-visible,
+.main-header .theme-selector .theme-selector__toggle[aria-expanded="true"] {
+  background-color: var(--mu-color-surface-3);
+  color: var(--mu-color-text);
+}
+
+.main-header .theme-selector .theme-selector__icon {
+  font-size: var(--mu-fs-base);
+}
+
+.main-header .theme-selector .theme-selector__menu {
+  margin-top: var(--mu-space-2);
+}
+
+/* User controls: same height as the search and the icon buttons. */
+.main-header .header-actions .btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--mu-space-1_5);
+  height: var(--mu-control-height);
+  --bs-btn-padding-x: var(--mu-space-4);
+  --bs-btn-font-size: var(--mu-text-button-size);
+}
+
+.main-header .header-actions .btn-group > .btn + .btn {
+  margin-left: 0;
+  border-left: 1px solid var(--mu-color-border);
+}
+
+.content {
+  background-color: var(--mu-color-surface);
+  background-image: var(--mu-gradient-card-sheen);
+  border-radius: var(--mu-radius-panel);
+  box-shadow: var(--mu-shadow-card);
+  min-height: 60vh;
+}
+
+/* ---------- Cards ---------- */
+.card {
+  --bs-card-bg: var(--mu-color-surface-2);
+  --bs-card-color: var(--mu-color-text);
+  --bs-card-border-width: 0;
+  --bs-card-border-radius: var(--mu-radius-card);
+  --bs-card-inner-border-radius: var(--mu-radius-card);
+  --bs-card-cap-bg: transparent;
+  --bs-card-cap-padding-y: var(--mu-space-3);
+  --bs-card-cap-padding-x: var(--mu-space-5);
+  --bs-card-spacer-y: var(--mu-space-4);
+  --bs-card-spacer-x: var(--mu-space-5);
+  --bs-card-title-color: var(--mu-color-text);
+  box-shadow: var(--mu-shadow-card);
+}
+
+.card-header {
+  border-bottom: 1px solid var(--mu-color-border);
+}
+
+.card-footer {
+  border-top: 1px solid var(--mu-color-border);
+}
+
+/* The measured "h2" of the reference is a card title. */
+.card-title,
+.card-header {
+  font-size: var(--mu-text-h2-size);
+  font-weight: var(--mu-text-h2-weight);
+  letter-spacing: var(--mu-text-h2-tracking);
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  --bs-btn-font-weight: var(--mu-text-button-weight);
+  --bs-btn-font-size: var(--mu-text-button-size);
+  --bs-btn-border-radius: var(--mu-radius-full);
+  --bs-btn-padding-x: var(--mu-space-4);
+  --bs-btn-focus-box-shadow: var(--mu-focus-ring);
+}
+
+.btn-sm {
+  --bs-btn-border-radius: var(--mu-radius-full);
+  --bs-btn-padding-x: var(--mu-space-3);
+  --bs-btn-font-size: var(--mu-text-caption-size);
+}
+
+.btn-lg {
+  --bs-btn-border-radius: var(--mu-radius-full);
+}
+
+.btn-primary {
+  --bs-btn-color: var(--mu-color-primary-contrast);
+  --bs-btn-bg: var(--mu-color-primary);
+  --bs-btn-border-color: var(--mu-color-primary);
+  --bs-btn-hover-color: var(--mu-color-primary-contrast);
+  --bs-btn-hover-bg: var(--mu-color-primary-hover);
+  --bs-btn-hover-border-color: var(--mu-color-primary-hover);
+  --bs-btn-active-color: var(--mu-color-primary-contrast);
+  --bs-btn-active-bg: var(--mu-color-primary-hover);
+  --bs-btn-active-border-color: var(--mu-color-primary-hover);
+  --bs-btn-disabled-color: var(--mu-color-primary-contrast);
+  --bs-btn-disabled-bg: var(--mu-color-primary);
+  --bs-btn-disabled-border-color: var(--mu-color-primary);
+  box-shadow: var(--mu-shadow-button);
+}
+
+.btn-secondary,
+.btn-light,
+.btn-outline-secondary,
+.btn-outline-primary,
+.btn-outline-dark,
+.btn-outline-light {
+  --bs-btn-color: var(--mu-color-text);
+  --bs-btn-bg: var(--mu-color-control-bg);
+  --bs-btn-border-color: transparent;
+  --bs-btn-hover-color: var(--mu-color-text);
+  --bs-btn-hover-bg: var(--mu-color-surface-3);
+  --bs-btn-hover-border-color: transparent;
+  --bs-btn-active-color: var(--mu-color-text);
+  --bs-btn-active-bg: var(--mu-color-surface-3);
+  --bs-btn-active-border-color: transparent;
+  --bs-btn-disabled-color: var(--mu-color-text-dim);
+  --bs-btn-disabled-bg: var(--mu-color-control-bg);
+  --bs-btn-disabled-border-color: transparent;
+  box-shadow: var(--mu-shadow-control-inset);
+}
+
+.btn-danger,
+.btn-outline-danger {
+  --bs-btn-color: var(--mu-color-danger);
+  --bs-btn-bg: var(--mu-color-danger-soft);
+  --bs-btn-border-color: transparent;
+  --bs-btn-hover-color: var(--mu-color-primary-contrast);
+  --bs-btn-hover-bg: var(--mu-color-danger);
+  --bs-btn-hover-border-color: transparent;
+  --bs-btn-active-color: var(--mu-color-primary-contrast);
+  --bs-btn-active-bg: var(--mu-color-danger);
+  --bs-btn-active-border-color: transparent;
+}
+
+.btn-success,
+.btn-outline-success {
+  --bs-btn-color: var(--mu-color-success);
+  --bs-btn-bg: var(--mu-color-success-soft);
+  --bs-btn-border-color: transparent;
+  --bs-btn-hover-color: var(--mu-color-primary-contrast);
+  --bs-btn-hover-bg: var(--mu-color-success);
+  --bs-btn-hover-border-color: transparent;
+  --bs-btn-active-color: var(--mu-color-primary-contrast);
+  --bs-btn-active-bg: var(--mu-color-success);
+  --bs-btn-active-border-color: transparent;
+}
+
+.btn-warning {
+  --bs-btn-color: var(--mu-color-primary-contrast);
+  --bs-btn-bg: var(--mu-color-warning);
+  --bs-btn-border-color: var(--mu-color-warning);
+  --bs-btn-hover-color: var(--mu-color-primary-contrast);
+  --bs-btn-hover-bg: color-mix(in srgb, var(--mu-color-warning) 86%, var(--mu-color-bg));
+  --bs-btn-hover-border-color: transparent;
+  --bs-btn-active-color: var(--mu-color-primary-contrast);
+  --bs-btn-active-bg: color-mix(in srgb, var(--mu-color-warning) 86%, var(--mu-color-bg));
+  --bs-btn-active-border-color: transparent;
+  box-shadow: var(--mu-shadow-button);
+}
+
+.btn-link {
+  --bs-btn-color: var(--mu-color-info);
+  --bs-btn-hover-color: var(--mu-color-text);
+  box-shadow: none;
+}
+
+/* ---------- Forms ---------- */
+.form-control,
+.form-select {
+  background-color: var(--mu-color-input-bg);
+  border-color: var(--mu-color-input-border);
+  border-radius: var(--mu-radius-control);
+  color: var(--mu-color-text);
+  font-size: var(--mu-text-input-size);
+}
+
+.form-control:focus,
+.form-select:focus {
+  background-color: var(--mu-color-input-bg);
+  border-color: var(--mu-color-primary);
+  box-shadow: var(--mu-focus-ring);
+  color: var(--mu-color-text);
+}
+
+.form-control::placeholder {
+  color: var(--mu-color-text-dim);
+}
+
+.form-control:disabled,
+.form-select:disabled {
+  background-color: var(--mu-color-surface-sunken);
+}
+
+.form-check-input {
+  background-color: var(--mu-color-input-bg);
+  border-color: var(--mu-color-input-border);
+}
+
+.form-check-input:checked {
+  background-color: var(--mu-color-primary);
+  border-color: var(--mu-color-primary);
+}
+
+[data-bs-theme="dark"] .form-check-input:checked[type="checkbox"] {
+  --bs-form-check-bg-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%231c1c1c' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='m6 10 3 3 6-6'/%3e%3c/svg%3e");
+}
+
+.form-check-input:focus {
+  border-color: var(--mu-color-primary);
+  box-shadow: var(--mu-focus-ring);
+}
+
+.input-group-text {
+  background-color: var(--mu-color-surface-2);
+  border-color: var(--mu-color-input-border);
+  color: var(--mu-color-text-dim);
+}
+
+.form-label,
+.col-form-label {
+  font-weight: var(--mu-fw-semibold);
+}
+
+/* ---------- Tables ---------- */
+.table,
+.quickgrid {
+  --bs-table-color: var(--mu-color-text);
+  --bs-table-bg: transparent;
+  --bs-table-border-color: var(--mu-color-border);
+  --bs-table-striped-color: var(--mu-color-text);
+  --bs-table-striped-bg: var(--mu-color-surface-sunken);
+  --bs-table-hover-color: var(--mu-color-text);
+  --bs-table-hover-bg: var(--mu-color-primary-soft);
+  --bs-table-active-bg: var(--mu-color-primary-soft);
+}
+
+/* No table header exists in the reference; header cells use the caption role, rows the measured list-row padding. */
+.table > thead > tr > th,
+.quickgrid thead th {
+  color: var(--mu-color-text-dim);
+  font-size: var(--mu-text-caption-size);
+  font-weight: var(--mu-fw-semibold);
+  border-bottom-color: var(--mu-color-border-strong);
+}
+
+.table > :not(caption) > * > * {
+  padding: var(--mu-space-2_5) var(--mu-space-3);
+}
+
+/* ---------- Badges, alerts, dropdowns, modals, lists, progress ---------- */
+.badge {
+  border-radius: var(--mu-radius-full);
+  font-size: var(--mu-text-badge-size);
+  font-weight: var(--mu-text-badge-weight);
+  padding: 0.3em var(--mu-space-1_5);
+}
+
+.text-bg-light,
+.text-bg-secondary {
+  background-color: var(--mu-color-badge-bg) !important;
+  color: var(--mu-color-badge-text) !important;
+}
+
+.text-bg-primary,
+.text-bg-dark {
+  background-color: var(--mu-color-primary) !important;
+  color: var(--mu-color-primary-contrast) !important;
+}
+
+/* Status colors are pastel in dark mode, so status badges use the soft background with the status color as text. */
+.text-bg-success {
+  background-color: var(--mu-color-success-soft) !important;
+  color: var(--mu-color-success) !important;
+}
+
+.text-bg-warning {
+  background-color: var(--mu-color-warning-soft) !important;
+  color: var(--mu-color-warning) !important;
+}
+
+.text-bg-danger {
+  background-color: var(--mu-color-danger-soft) !important;
+  color: var(--mu-color-danger) !important;
+}
+
+.text-bg-info {
+  background-color: var(--mu-color-info-soft) !important;
+  color: var(--mu-color-info) !important;
+}
+
+.alert {
+  --bs-alert-border-radius: var(--mu-radius-lg);
+}
+
+.dropdown-menu {
+  --bs-dropdown-bg: var(--mu-color-surface-overlay);
+  --bs-dropdown-color: var(--mu-color-text);
+  --bs-dropdown-border-color: var(--mu-color-border);
+  --bs-dropdown-border-radius: var(--mu-radius-lg);
+  --bs-dropdown-inner-border-radius: var(--mu-radius-lg);
+  --bs-dropdown-box-shadow: var(--mu-shadow-lg);
+  --bs-dropdown-link-color: var(--mu-color-text);
+  --bs-dropdown-link-hover-color: var(--mu-color-text);
+  --bs-dropdown-link-hover-bg: var(--mu-color-primary-soft);
+  --bs-dropdown-link-active-color: var(--mu-color-primary-contrast);
+  --bs-dropdown-link-active-bg: var(--mu-color-primary);
+  --bs-dropdown-divider-bg: var(--mu-color-border);
+  --bs-dropdown-padding-x: var(--mu-space-1_5);
+  --bs-dropdown-item-border-radius: var(--mu-radius-sm);
+  backdrop-filter: blur(var(--mu-glass-blur));
+}
+
+.modal {
+  --bs-modal-bg: var(--mu-color-surface-overlay);
+  --bs-modal-color: var(--mu-color-text);
+  --bs-modal-border-color: var(--mu-color-border);
+  --bs-modal-border-radius: var(--mu-radius-xl);
+  --bs-modal-inner-border-radius: var(--mu-radius-xl);
+  --bs-modal-box-shadow: var(--mu-shadow-lg);
+  --bs-modal-header-border-color: var(--mu-color-border);
+  --bs-modal-footer-border-color: var(--mu-color-border);
+}
+
+.list-group {
+  --bs-list-group-bg: var(--mu-color-surface-2);
+  --bs-list-group-color: var(--mu-color-text);
+  --bs-list-group-border-color: var(--mu-color-border);
+  --bs-list-group-border-radius: var(--mu-radius-lg);
+  --bs-list-group-action-hover-bg: var(--mu-color-primary-soft);
+  --bs-list-group-action-active-bg: var(--mu-color-primary-soft);
+  --bs-list-group-active-color: var(--mu-color-primary-contrast);
+  --bs-list-group-active-bg: var(--mu-color-primary);
+  --bs-list-group-active-border-color: var(--mu-color-primary);
+}
+
+.nav-pills {
+  --bs-nav-pills-border-radius: var(--mu-radius-full);
+  --bs-nav-pills-link-active-color: var(--mu-color-primary-contrast);
+  --bs-nav-pills-link-active-bg: var(--mu-color-primary);
+}
+
+.nav-tabs {
+  --bs-nav-tabs-border-color: var(--mu-color-border);
+  --bs-nav-tabs-link-active-bg: var(--mu-color-surface-2);
+  --bs-nav-tabs-link-active-color: var(--mu-color-text);
+  --bs-nav-tabs-link-active-border-color: var(--mu-color-border) var(--mu-color-border) transparent;
+  --bs-nav-tabs-border-radius: var(--mu-radius-sm);
+}
+
+.nav-link {
+  --bs-nav-link-color: var(--mu-color-text-dim);
+  --bs-nav-link-hover-color: var(--mu-color-text);
+}
+
+.pagination {
+  --bs-pagination-bg: var(--mu-color-control-bg);
+  --bs-pagination-color: var(--mu-color-text);
+  --bs-pagination-border-color: var(--mu-color-border);
+  --bs-pagination-hover-bg: var(--mu-color-surface-3);
+  --bs-pagination-hover-color: var(--mu-color-text);
+  --bs-pagination-active-bg: var(--mu-color-primary);
+  --bs-pagination-active-color: var(--mu-color-primary-contrast);
+  --bs-pagination-active-border-color: var(--mu-color-primary);
+  --bs-pagination-disabled-bg: transparent;
+  --bs-pagination-border-radius: var(--mu-radius-sm);
+}
+
+.progress,
+.progress-stacked {
+  --bs-progress-bg: var(--mu-color-surface-sunken);
+  --bs-progress-bar-bg: var(--mu-color-primary);
+  --bs-progress-border-radius: var(--mu-radius-full);
+}
+
+.breadcrumb {
+  --bs-breadcrumb-divider-color: var(--mu-color-text-dim);
+  --bs-breadcrumb-item-active-color: var(--mu-color-text);
+  font-size: var(--mu-text-caption-size);
+}
+
+.toast {
+  --bs-toast-bg: var(--mu-color-surface-overlay);
+  --bs-toast-color: var(--mu-color-text);
+  --bs-toast-border-color: var(--mu-color-border);
+  --bs-toast-border-radius: var(--mu-radius-lg);
+  --bs-toast-box-shadow: var(--mu-shadow-lg);
+  --bs-toast-header-bg: transparent;
+  --bs-toast-header-color: var(--mu-color-text);
+}
