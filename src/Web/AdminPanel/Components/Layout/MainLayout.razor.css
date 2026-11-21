@@ -1,4 +1,4 @@
-.page {
+﻿.page {
     display: flex;
     flex-direction: row;
 }
@@ -6,10 +6,6 @@
 main {
     flex: 1;
     min-width: 0;
-}
-
-.sidebar {
-    background-image: var(--omu-sidebar-gradient);
 }
 
 .header-search {
@@ -24,7 +20,7 @@ main {
 
 .breadcrumb-bar {
     min-height: 2.5rem;
-    background-color: var(--omu-surface-2);
+    background-color: transparent;
 }
 
 .breadcrumb-bar ::deep .breadcrumb-nav {
