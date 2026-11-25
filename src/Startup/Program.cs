@@ -21,6 +21,7 @@ using MUnique.OpenMU.DataModel.Configuration;
 using MUnique.OpenMU.Discord;
 using MUnique.OpenMU.FriendServer;
 using MUnique.OpenMU.GameLogic;
+using MUnique.OpenMU.GameLogic.PlugIns.GameEvents;
 using MUnique.OpenMU.GameLogic.TestActors;
 using MUnique.OpenMU.GameServer;
 using MUnique.OpenMU.GuildServer;
@@ -106,9 +107,9 @@ internal sealed class Program : IDisposable
         {
             if (_confirmExit)
             {
-#pragma warning disable VSTHRD103 // Call async methods when in an async method
+#pragma warning disable VSTHRD103 // The CancelKeyPress handler is synchronous and can't await CancelAsync.
                 exitCts.Cancel();
-#pragma warning restore VSTHRD103 // Call async methods when in an async method
+#pragma warning restore VSTHRD103
                 Console.CancelKeyPress -= OnCancelKeyPress;
                 Console.WriteLine("\nBye! Press enter to finish");
             }
@@ -125,9 +126,9 @@ internal sealed class Program : IDisposable
         {
             if (!exitToken.IsCancellationRequested)
             {
-#pragma warning disable VSTHRD103 // Call async methods when in an async method
+#pragma warning disable VSTHRD103 // The ProcessExit handler is synchronous. The cancellation must be requested before it returns, because the process is already exiting.
                 exitCts.Cancel();
-#pragma warning restore VSTHRD103 // Call async methods when in an async method
+#pragma warning restore VSTHRD103
                 Debug.WriteLine("KILL");
             }
         };
@@ -411,6 +412,7 @@ internal sealed class Program : IDisposable
             .AddSingleton<IGuildServer, GuildServer>()
             .AddSingleton<IFriendServer, FriendServer>()
             .AddDiscordIntegration(builder.Configuration.GetSection(DiscordSettings.SectionName), () => ServerTimeZone)
+            .AddSingleton<IGameEventListener, GameEventPlugInListener>()
             .AddSingleton<ChatServer>()
             .AddSingleton<IChatServer>(s => s.GetService<ChatServer>()!)
             .AddSingleton<ConnectServerFactory>()
@@ -575,6 +577,8 @@ internal sealed class Program : IDisposable
 
     private async ValueTask OnDatabaseInitializedAsync(IServiceProvider services)
     {
+        await this.DiscardStaleConfigurationAsync(services).ConfigureAwait(false);
+
         try
         {
             if (services.GetService<PlugInManager>() is not { } plugInManager
@@ -599,6 +603,22 @@ internal sealed class Program : IDisposable
         catch (Exception ex)
         {
             this._logger.Error(ex, "Error when applying the plugin configurations after the database initialization.");
+        }
+    }
+
+    private async ValueTask DiscardStaleConfigurationAsync(IServiceProvider services)
+    {
+        try
+        {
+            // The shared data source still holds entities of the dropped database; reload them on next access.
+            if (services.GetService<IDataSource<GameConfiguration>>() is { } dataSource)
+            {
+                await dataSource.ForceDiscardChangesAsync().ConfigureAwait(false);
+            }
+        }
+        catch (Exception ex)
+        {
+            this._logger.Error(ex, "Error when discarding the stale game configuration after the database initialization.");
         }
     }
 

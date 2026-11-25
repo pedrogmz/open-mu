@@ -3751,6 +3751,36 @@
   <data name="MiniGameReward_Rank_Description" xml:space="preserve">
     <value></value>
   </data>
+  <data name="MiniGameReward_MaximumRank_Caption" xml:space="preserve">
+    <value>最高名次</value>
+  </data>
+  <data name="MiniGameReward_MaximumRank_Description" xml:space="preserve">
+    <value>设置后，奖励适用于从奖励名次到此名次的所有名次；否则仅适用于奖励名次。</value>
+  </data>
+  <data name="MiniGameReward_MinimumRankedPlayers_Caption" xml:space="preserve">
+    <value>最少排名玩家数</value>
+  </data>
+  <data name="MiniGameReward_MinimumRankedPlayers_Description" xml:space="preserve">
+    <value>仅当排名玩家数量不少于此值时奖励才适用。</value>
+  </data>
+  <data name="MiniGameReward_MaximumRankedPlayers_Caption" xml:space="preserve">
+    <value>最多排名玩家数</value>
+  </data>
+  <data name="MiniGameReward_MaximumRankedPlayers_Description" xml:space="preserve">
+    <value>仅当排名玩家数量不多于此值时奖励才适用。</value>
+  </data>
+  <data name="MiniGameReward_MinimumRankPercentage_Caption" xml:space="preserve">
+    <value>最小名次百分比</value>
+  </data>
+  <data name="MiniGameReward_MinimumRankPercentage_Description" xml:space="preserve">
+    <value>仅当名次百分比（名次 * 100 / 排名玩家数，向下取整）不小于此值时奖励才适用。</value>
+  </data>
+  <data name="MiniGameReward_MaximumRankPercentage_Caption" xml:space="preserve">
+    <value>最大名次百分比</value>
+  </data>
+  <data name="MiniGameReward_MaximumRankPercentage_Description" xml:space="preserve">
+    <value>仅当名次百分比（名次 * 100 / 排名玩家数，向下取整）不大于此值时奖励才适用。</value>
+  </data>
   <data name="MiniGameReward_RewardType_Caption" xml:space="preserve">
     <value>奖励类型</value>
   </data>
@@ -4155,6 +4185,12 @@
   </data>
   <data name="MonsterDefinition_NumberOfMaximumItemDrops_Description" xml:space="preserve">
     <value></value>
+  </data>
+  <data name="MonsterDefinition_DropsNoZen_Caption" xml:space="preserve">
+    <value>不掉落金币</value>
+  </data>
+  <data name="MonsterDefinition_DropsNoZen_Description" xml:space="preserve">
+    <value>勾选后，怪物死亡时不掉落金币；物品掉落不受影响。用于只由活动奖励的怪物。</value>
   </data>
   <data name="MonsterDefinition_NpcWindow_Caption" xml:space="preserve">
     <value>NPC 窗口</value>
@@ -5764,6 +5800,12 @@
   <data name="WarpInfo_Gate_Description" xml:space="preserve">
     <value></value>
   </data>
+  <data name="WarpInfo_Requirements_Caption" xml:space="preserve">
+    <value>传送要求</value>
+  </data>
+  <data name="WarpInfo_Requirements_Description" xml:space="preserve">
+    <value>角色除等级要求和目标地图要求外还需要满足的属性。开源客户端会获知最低大师等级和最低转生次数，并将角色尚不能使用的传送显示为不可用。</value>
+  </data>
   <data name="Account_IsBot_Caption" xml:space="preserve">
     <value>机器人账号</value>
   </data>
@@ -6504,5 +6546,77 @@
   </data>
   <data name="WaitingItemReason_NoSpaceWhenLoaded_Description" xml:space="preserve">
     <value>加载存放位置时物品找不到空间，例如其定义的尺寸变大了。</value>
+  </data>
+  <data name="GameConfiguration_WeightedValueTables_Caption" xml:space="preserve">
+    <value>加权数值表</value>
+  </data>
+  <data name="ItemDefinition_SocketCountTable_Caption" xml:space="preserve">
+    <value>镶嵌孔数量表</value>
+  </data>
+  <data name="DropItemGroup_SocketCountTable_Caption" xml:space="preserve">
+    <value>镶嵌孔数量表</value>
+  </data>
+  <data name="WeightedValueTable_TypeCaption" xml:space="preserve">
+    <value>加权数值表</value>
+  </data>
+  <data name="WeightedValueTable_TypeCaptionPlural" xml:space="preserve">
+    <value>加权数值表</value>
+  </data>
+  <data name="WeightedValueTable_Name_Caption" xml:space="preserve">
+    <value>名称</value>
+  </data>
+  <data name="WeightedValueTable_Description_Caption" xml:space="preserve">
+    <value>描述</value>
+  </data>
+  <data name="WeightedValueTable_Values_Caption" xml:space="preserve">
+    <value>数值</value>
+  </data>
+  <data name="WeightedValue_TypeCaption" xml:space="preserve">
+    <value>加权数值</value>
+  </data>
+  <data name="WeightedValue_TypeCaptionPlural" xml:space="preserve">
+    <value>加权数值</value>
+  </data>
+  <data name="WeightedValue_Value_Caption" xml:space="preserve">
+    <value>数值</value>
+  </data>
+  <data name="WeightedValue_Weight_Caption" xml:space="preserve">
+    <value>权重</value>
+  </data>
+  <data name="SimpleCraftingSettings_ResultItemExcellentOptionCountTable_Caption" xml:space="preserve">
+    <value>结果物品卓越属性数量表</value>
+  </data>
+  <data name="SimpleCraftingSettings_ResultItemSocketCountTable_Caption" xml:space="preserve">
+    <value>结果物品镶嵌孔数量表</value>
+  </data>
+  <data name="CastleSiegeConfiguration_LordsMixLimit_Caption" xml:space="preserve">
+    <value>领主合成次数上限</value>
+  </data>
+  <data name="CastleSiegeData_LordsMixCount_Caption" xml:space="preserve">
+    <value>领主合成次数</value>
+  </data>
+  <data name="CastleSiegeConfiguration_LordsMixLimitPeriod_Caption" xml:space="preserve">
+    <value>领主合成次数上限周期</value>
+  </data>
+  <data name="CastleSiegeConfiguration_LordsMixLimitPeriod_Description" xml:space="preserve">
+    <value>领主合成次数上限的周期：每天（服务器本地时间午夜重置）或每个攻城周期（攻城结束时重置）。</value>
+  </data>
+  <data name="CastleSiegeData_LordsMixCountDate_Caption" xml:space="preserve">
+    <value>领主合成计数日期</value>
+  </data>
+  <data name="CastleSiegeData_LordsMixCountDate_Description" xml:space="preserve">
+    <value>最后一次计入的领主合成的日期（服务器本地时间），用于每天的次数上限。</value>
+  </data>
+  <data name="ItemCraftingResultItem_ExcellentOptionChance_Caption" xml:space="preserve">
+    <value>卓越属性几率</value>
+  </data>
+  <data name="ItemCraftingResultItem_ExcellentOptionChance_Description" xml:space="preserve">
+    <value>此结果物品的卓越属性几率（百分比），代替合成的几率。为空时，使用合成的几率。</value>
+  </data>
+  <data name="LordsMixLimitPeriod_Day_Caption" xml:space="preserve">
+    <value>天</value>
+  </data>
+  <data name="LordsMixLimitPeriod_SiegeCycle_Caption" xml:space="preserve">
+    <value>攻城周期</value>
   </data>
 </root>

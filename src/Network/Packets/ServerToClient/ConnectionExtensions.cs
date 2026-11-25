@@ -6663,12 +6663,12 @@ public static class ConnectionExtensions
     /// <param name="connection">The connection.</param>
     /// <param name="questNumber">The quest number.</param>
     /// <param name="questGroup">The quest group.</param>
-    /// <param name="isQuestCompleted">The is quest completed.</param>
+    /// <param name="result">The result.</param>
     /// <remarks>
-    /// Is sent by the server when: The server acknowledges the completion of a quest.
-    /// Causes reaction on client side: The client shows the success and possibly requests for the next available quests.
+    /// Is sent by the server when: The server acknowledges the completion of a quest, or refuses it because the rewards don't fit.
+    /// Causes reaction on client side: When the quest was completed, the client shows the success and possibly requests for the next available quests. When it was refused, the client shows a message and disables the button to complete the quest.
     /// </remarks>
-    public static async ValueTask SendQuestCompletionResponseAsync(this IConnection? connection, ushort @questNumber, ushort @questGroup, bool @isQuestCompleted)
+    public static async ValueTask SendQuestCompletionResponseAsync(this IConnection? connection, ushort @questNumber, ushort @questGroup, QuestCompletionResponse.QuestCompletionResult @result)
     {
         if (connection is null)
         {
@@ -6681,7 +6681,7 @@ public static class ConnectionExtensions
             var packet = new QuestCompletionResponseRef(connection.Output.GetSpan(length)[..length]);
             packet.QuestNumber = @questNumber;
             packet.QuestGroup = @questGroup;
-            packet.IsQuestCompleted = @isQuestCompleted;
+            packet.Result = @result;
 
             return packet.Header.Length;
         }
@@ -7230,6 +7230,34 @@ public static class ConnectionExtensions
             packet.Result = @result;
             packet.LinkCode = @linkCode;
             packet.ValidMinutes = @validMinutes;
+
+            return packet.Header.Length;
+        }
+
+        await connection.SendAsync(WritePacket).ConfigureAwait(false);
+    }
+
+    /// <summary>
+    /// Sends a <see cref="RoundTripResponse" /> to this connection.
+    /// </summary>
+    /// <param name="connection">The connection.</param>
+    /// <param name="token">The token of the request.</param>
+    /// <remarks>
+    /// Is sent by the server when: Right after the client sent a RoundTripRequest.
+    /// Causes reaction on client side: The client takes the time since it sent the request with this token as the round trip time, e.g. to show the player's ping.
+    /// </remarks>
+    public static async ValueTask SendRoundTripResponseAsync(this IConnection? connection, uint @token)
+    {
+        if (connection is null)
+        {
+            return;
+        }
+
+        int WritePacket()
+        {
+            var length = RoundTripResponseRef.Length;
+            var packet = new RoundTripResponseRef(connection.Output.GetSpan(length)[..length]);
+            packet.Token = @token;
 
             return packet.Header.Length;
         }

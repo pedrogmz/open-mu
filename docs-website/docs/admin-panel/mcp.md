@@ -321,8 +321,8 @@ expose host details. A missing kind is not evidence that retrying is safe.
 
 Configuration tools require Administrator and explicitly enabled MCP writes.
 The read-only catalog also includes `rates_get`, `drops_explain`,
-`spawns_list` and `content_list`. Every configuration write and offline
-character write uses two calls:
+`spawns_list`, `content_list` and `effect_times_list`. Every configuration
+write and offline character write uses two calls:
 
 1. Call the tool with its proposed arguments and `apply: false` (the default).
    Inspect `change`, `affectedObjects`, and the restart guidance.
@@ -342,7 +342,7 @@ after commit. Agent reads use persisted data even while the panel has pending
 edits. Panel caches reload after a write when clean; pending graphical edits
 are preserved, and the panel reloads after those edits are saved or discarded.
 If an open editor's context was replaced before any edits were pending, Save
-asks you to copy unsaved edits and use Refresh before saving again. Closing
+asks you to copy unsaved edits and use Reload before saving again. Closing
 the stale page does not discard changes in the replacement context.
 Previews run without the write gate or a serializable transaction; each caller
 may hold at most 64 outstanding confirmations (1,024 total).
@@ -357,6 +357,7 @@ it does not restart servers automatically.
 | `plugins_set_active` | Enable or disable an installed plugin |
 | `plugins_update_configuration` | Patch non-secret scalar plugin settings |
 | `content_list`, `content_restrict_to_version`, `content_set_active` | Inspect/activate/deactivate maps, classes, monsters, items and mini games |
+| `effect_times_list`, `effect_times_set` | Inspect/switch which magic effects send their remaining time to the client |
 | `rates_get`, `rates_set` | Inspect/set experience and money rates |
 | `drops_explain`, `drops_update` | Inspect groups/change chances or add items |
 | `spawns_list`, `spawns_update` | Inspect/change monster spawn rectangles |
@@ -577,8 +578,8 @@ dotnet test tests/MUnique.OpenMU.Web.Tests -c Release -p:ci=true --no-build \
 
 Verify the preview/apply flow with two agent clients. In the panel, also check
 “open a configuration editor without editing → apply an MCP change → edit and
-save”: Save must request a refresh, and Refresh must load the committed value.
-Copy the pending edit before refreshing, then reapply it and save normally.
+save”: Save must request a reload, and Reload must load the committed value.
+Copy the pending edit before reloading, then reapply it and save normally.
 
 Player-list enrichment reads one best-effort scalar snapshot per owning server,
 then filters and pages the combined result. It does not wait for player progress

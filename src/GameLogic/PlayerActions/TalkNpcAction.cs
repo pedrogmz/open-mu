@@ -68,7 +68,11 @@ public class TalkNpcAction
     /// </summary>
     /// <param name="npc">The NPC whose dialog is about to be opened.</param>
     /// <returns>A value indicating whether this action advances the player state to <see cref="PlayerState.NpcDialogOpened" />.</returns>
-    protected virtual bool AdvancePlayerState(NonPlayerCharacter npc) => true;
+    /// <remarks>
+    /// Not for the illusion temple entrance: its window is closed by the client without a close request (the original
+    /// client did the same), so the player would stay in the dialog state and couldn't talk to any other npc.
+    /// </remarks>
+    protected virtual bool AdvancePlayerState(NonPlayerCharacter npc) => npc.Definition.NpcWindow != NpcWindow.IllusionTemple;
 
     private async ValueTask ShowDialogOfOpenedNpcAsync(Player player)
     {
@@ -164,7 +168,8 @@ public class TalkNpcAction
     private async ValueTask ShowLegacyQuestDialogAsync(Player player)
     {
         var quests = player.OpenedNpc!.Definition.Quests
-            .Where(q => q.QualifiedCharacter is null || Equals(q.QualifiedCharacter, player.SelectedCharacter!.CharacterClass));
+            .Where(q => q.QualifiedCharacter is null || Equals(q.QualifiedCharacter, player.SelectedCharacter!.CharacterClass))
+            .Where(q => !q.IsOfAnEvolutionAlreadyHad(player));
 
         if (!quests.Any())
         {

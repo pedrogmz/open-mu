@@ -93,6 +93,12 @@ public class DefaultDropGenerator : IDropGenerator
             this.PartitionDropGroups(await GetQuestItemGroupsAsync(player).ConfigureAwait(false) ?? [], monster);
         }
 
+        if (monster.DropsNoZen)
+        {
+            this._guaranteedDropGroups.RemoveAll(static group => group.ItemType == SpecialItemType.Money);
+            this._chanceDropGroups.RemoveAll(static group => group.ItemType == SpecialItemType.Money);
+        }
+
         uint money = 0;
         var itemDropRate = 1.0 + (player.Attributes?[Stats.BonusItemDropRate] ?? 0);
         var (droppedItems, moneyResult) = this.GenerateDrops(monster, gainedExperience, itemDropRate);
@@ -170,7 +176,7 @@ public class DefaultDropGenerator : IDropGenerator
 
         if (item.Definition.MaximumSockets > 0)
         {
-            item.SocketCount = this._randomizer.NextInt(1, item.Definition.MaximumSockets + 1);
+            item.SocketCount = this.SelectSocketCount(item.Definition, item.Definition.SocketCountTable);
         }
 
         if (item.CanHaveSkill())
@@ -395,6 +401,8 @@ public class DefaultDropGenerator : IDropGenerator
             item.Durability = item.GetMaximumDurabilityOfOnePiece();
         }
 
+        this.ApplySocketCountTableOfGroup(item, selectedGroup);
+
         if (selectedGroup is ItemDropItemGroup itemDropItemGroup)
         {
             item.Level = (byte)this._randomizer.NextInt(itemDropItemGroup.MinimumLevel, itemDropItemGroup.MaximumLevel + 1);
@@ -553,6 +561,11 @@ public class DefaultDropGenerator : IDropGenerator
         }
 
         var item = this.GenerateSpecialItem(monster, selectedGroup);
+        if (item is not null)
+        {
+            this.ApplySocketCountTableOfGroup(item, selectedGroup);
+        }
+
         if (item is null && selectedGroup.ItemType == SpecialItemType.Money)
         {
             droppedMoney = (uint)(gainedExperience + BaseMoneyDrop);
@@ -614,6 +627,37 @@ public class DefaultDropGenerator : IDropGenerator
         }
 
         return null;
+    }
+
+    /// <summary>
+    /// Selects the number of sockets of a dropped socket item.
+    /// </summary>
+    /// <remarks>
+    /// Values of the table above <see cref="ItemDefinition.MaximumSockets"/> are never selected.
+    /// Without a table, or if the table has no selectable value, the number is selected uniformly
+    /// between 1 and <see cref="ItemDefinition.MaximumSockets"/>, so that a socket item never drops without sockets.
+    /// </remarks>
+    private int SelectSocketCount(ItemDefinition definition, WeightedValueTable? table)
+    {
+        if (table?.SelectRandomValue(this._randomizer, 1, definition.MaximumSockets) is { } socketCount)
+        {
+            return socketCount;
+        }
+
+        return this._randomizer.NextInt(1, definition.MaximumSockets + 1);
+    }
+
+    /// <summary>
+    /// Selects the number of sockets of an item again, by the <see cref="DropItemGroup.SocketCountTable"/> of the group
+    /// which dropped it, if it has one.
+    /// </summary>
+    private void ApplySocketCountTableOfGroup(Item item, DropItemGroup group)
+    {
+        if (group.SocketCountTable is { } table
+            && item.Definition is { MaximumSockets: > 0 } definition)
+        {
+            item.SocketCount = this.SelectSocketCount(definition, table);
+        }
     }
 
     private IList<ItemDefinition>? GetPossibleList(int monsterLevel, bool isSocketItem = false)

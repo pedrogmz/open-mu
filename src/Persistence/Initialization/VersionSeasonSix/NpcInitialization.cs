@@ -882,6 +882,10 @@ internal partial class NpcInitialization : Version095d.NpcInitialization
             var attributes = new Dictionary<AttributeDefinition, float>
             {
                 { Stats.MaximumHealth, 5000000 },
+                { Stats.IceResistance, 100 },
+                { Stats.PoisonResistance, 100 },
+                { Stats.LightningResistance, 100 },
+                { Stats.FireResistance, 100 },
             };
             def.AddAttributes(attributes, this.Context, this.GameConfiguration);
             def.SetGuid(def.Number);
@@ -897,6 +901,10 @@ internal partial class NpcInitialization : Version095d.NpcInitialization
             var attributes = new Dictionary<AttributeDefinition, float>
             {
                 { Stats.MaximumHealth, 5000000 },
+                { Stats.IceResistance, 100 },
+                { Stats.PoisonResistance, 100 },
+                { Stats.LightningResistance, 100 },
+                { Stats.FireResistance, 100 },
             };
             def.AddAttributes(attributes, this.Context, this.GameConfiguration);
             def.SetGuid(def.Number);
@@ -919,6 +927,10 @@ internal partial class NpcInitialization : Version095d.NpcInitialization
             var attributes = new Dictionary<AttributeDefinition, float>
             {
                 { Stats.MaximumHealth, 5000000 },
+                { Stats.IceResistance, 100 },
+                { Stats.PoisonResistance, 100 },
+                { Stats.LightningResistance, 100 },
+                { Stats.FireResistance, 100 },
             };
             def.AddAttributes(attributes, this.Context, this.GameConfiguration);
             def.SetGuid(def.Number);
@@ -933,6 +945,10 @@ internal partial class NpcInitialization : Version095d.NpcInitialization
             var attributes = new Dictionary<AttributeDefinition, float>
             {
                 { Stats.MaximumHealth, 5000000 },
+                { Stats.IceResistance, 100 },
+                { Stats.PoisonResistance, 100 },
+                { Stats.LightningResistance, 100 },
+                { Stats.FireResistance, 100 },
             };
             def.AddAttributes(attributes, this.Context, this.GameConfiguration);
             def.SetGuid(def.Number);
@@ -1115,9 +1131,10 @@ internal partial class NpcInitialization : Version095d.NpcInitialization
     }
 
     /// <summary>
-    /// Creates the "Illusion Sorc. Spirit" monsters (386-399) which roam the arena of the six illusion
+    /// Creates the "Illusion Sorc. Spirit" monsters (386-403) which roam the arena of the six illusion
     /// temples - killing them grants skill points for the event's special skills. Each temple level uses
-    /// its own set of three (temple 5: two) increasingly stronger variants.
+    /// its own set of three increasingly stronger variants, which the client shows as the lightning, ice and
+    /// poison spirit.
     /// </summary>
     private void CreateIllusionSorcererSpirits()
     {
@@ -1137,6 +1154,10 @@ internal partial class NpcInitialization : Version095d.NpcInitialization
             (397, 82, 19680, 520, 540, 400, 840, 280, 1, 6, 1600, 2000),
             (398, 85, 25500, 595, 615, 450, 760, 275, 4, 4, 800, 1600),
             (399, 85, 25500, 615, 635, 470, 820, 303, 4, 4, 800, 1600),
+            (400, 87, 26100, 635, 655, 490, 900, 335, 1, 6, 1600, 2000),
+            (401, 112, 36000, 720, 740, 550, 1015, 405, 4, 4, 800, 1600),
+            (402, 112, 36000, 740, 760, 570, 1080, 440, 4, 4, 800, 1600),
+            (403, 114, 36800, 760, 780, 590, 1190, 485, 1, 6, 1600, 2000),
         };
 
         foreach (var spirit in spirits)

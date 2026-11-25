@@ -37,7 +37,10 @@ to it:
   restriction (if set) matches,
 * the groups of active **quests** of the killer (or the party).
 
-Destructible objects only use their own groups.
+Destructible objects only use their own groups. Monsters with *drops no zen*,
+e.g. the bosses of the Imperial Guardian, skip the groups of type `Money`; the
+other groups still apply. The maps of the Devil Square and the Illusion Temple
+have no money group, because their monsters give no zen.
 
 A monster then rolls up to its **maximum item drops** times:
 
@@ -66,7 +69,7 @@ The settings of the game configuration which affect all drops:
 
 | Setting | Meaning |
 |---|---|
-| Drop money | Whether monsters drop money on the ground, or add it to the inventory of the killer directly |
+| Drop money | Whether monsters drop money on the ground, or add it to the inventory of the killer directly. It applies to the mini games, too. |
 | Item drop duration | How many seconds a dropped item stays on the ground |
 | Maximum item option level | The highest item option level (+4, +8, +12, +16) a dropped item can get |
 | Excellent item drop level delta | How many levels a monster must be above the drop level of an item, so that it can drop as excellent item |
@@ -113,6 +116,17 @@ are selected, random items are dropped depending on the type and the monster
 level. The possible items of a map group are additionally filtered by the
 monster level, so that e.g. a high level item doesn't drop from a low level
 monster.
+
+The details of an excellent item group also offer the chance and the maximum
+number of excellent options. For the other groups, except money, you can select
+a **socket count table**. It decides how many sockets the socket items of this
+group get, and overrides the socket count table of the item definition, so that
+for example a boss or a box drops socket items with more sockets than a normal
+drop. A socket count table is a *weighted value table*: a list of values with
+relative weights, which you edit in the game configuration. A value with a weight
+of 0 never drops, and a value above the maximum sockets of the item neither.
+Without any table, the number of sockets is selected with the same chance
+between 1 and the maximum sockets of the item.
 
 A group which isn't assigned to any map doesn't drop anywhere; such a group is
 marked with **Not assigned to any map** in the list. **Add drop item group**

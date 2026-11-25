@@ -192,6 +192,12 @@
   <data name="TheValueMustNotContain" xml:space="preserve">
     <value>{0}：值不能包含“{1}”。</value>
   </data>
+  <data name="ShowAllLanguages" xml:space="preserve">
+    <value>显示所有语言</value>
+  </data>
+  <data name="ShowSelectedLanguageOnly" xml:space="preserve">
+    <value>仅显示所选语言</value>
+  </data>
   <data name="PleaseSelectItemDefinition" xml:space="preserve">
     <value>&lt;请选择物品定义&gt;</value>
   </data>
@@ -276,8 +282,8 @@
   <data name="DiscardEntryQuestion" xml:space="preserve">
     <value>您正在创建“{0}”，是否放弃并重新创建？</value>
   </data>
-  <data name="Refresh" xml:space="preserve">
-    <value>刷新</value>
+  <data name="Reload" xml:space="preserve">
+    <value>重新加载</value>
   </data>
   <data name="ToggleTheme" xml:space="preserve">
     <value>切换主题</value>
@@ -295,7 +301,7 @@
     <value>自动（跟随系统）</value>
   </data>
   <data name="MapEditorShortcutPan" xml:space="preserve">
-    <value>单击空白区域并拖动以平移地图</value>
+    <value>按住鼠标中键拖动以平移地图</value>
   </data>
   <data name="MapEditorShortcutDrag" xml:space="preserve">
     <value>按住 CTRL 并单击对象以拖动</value>
@@ -492,10 +498,6 @@
   <data name="FileLoaded" xml:space="preserve">
     <value>已加载 {0}，共 {1} 字节。</value>
   </data>
-  <data name="PaginationItems" xml:space="preserve"><value>共 {0} 条</value></data>
-  <data name="PaginationPage" xml:space="preserve"><value>第 {0} 页，共 {1} 页</value></data>
-  <data name="FirstPage" xml:space="preserve"><value>首页</value></data>
-  <data name="LastPage" xml:space="preserve"><value>末页</value></data>
   <data name="InvalidNumber" xml:space="preserve"><value>{0}必须是数字。</value></data>
   <data name="MonsterLabel" xml:space="preserve"><value>怪物</value></data>
   <data name="MapsLabel" xml:space="preserve"><value>地图</value></data>
@@ -643,5 +645,14 @@
   </data>
   <data name="ZoomOut" xml:space="preserve">
     <value>缩小</value>
+  </data>
+  <data name="ItemEdit_IsTimeLimited" xml:space="preserve">
+    <value>限时</value>
+  </data>
+  <data name="ItemEdit_ExpiresAt" xml:space="preserve">
+    <value>过期时间（UTC）</value>
+  </data>
+  <data name="ItemEdit_CannotBeTimeLimited" xml:space="preserve">
+    <value>此物品不能限时：只有可装备、不会被消耗、且过期后可丢弃或出售给 NPC 的物品才能限时。</value>
   </data>
 </root>

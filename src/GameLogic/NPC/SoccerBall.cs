@@ -37,7 +37,18 @@ public sealed class SoccerBall : NonPlayerCharacter, IAttackable, IMovable
     public event AsyncEventHandler<(Point From, Point To)>? Moved;
 
     /// <inheritdoc />
-    public event EventHandler<DeathInformation>? Died;
+    public event EventHandler<DeathInformation>? Died
+    {
+        add
+        {
+            // The event is never raised, so there is nothing to subscribe to.
+        }
+
+        remove
+        {
+            // The event is never raised, so there is nothing to unsubscribe from.
+        }
+    }
 
     /// <inheritdoc />
     public IAttributeSystem Attributes { get; }
@@ -63,23 +74,9 @@ public sealed class SoccerBall : NonPlayerCharacter, IAttackable, IMovable
     }
 
     /// <inheritdoc />
-    public ValueTask ReflectDamageAsync(IAttacker reflector, uint damage)
+    public ValueTask ApplyDamageAsync(IAttacker attacker, uint damage, DamageAttributes damageAttributes)
     {
-        // A ball doesn't attack, so it doesn't reflect.
-        return ValueTask.CompletedTask;
-    }
-
-    /// <inheritdoc />
-    public ValueTask ApplyPoisonDamageAsync(IAttacker initialAttacker, uint damage)
-    {
-        // A ball doesn't take any damage
-        return ValueTask.CompletedTask;
-    }
-
-    /// <inheritdoc />
-    public ValueTask ApplyBleedingDamageAsync(IAttacker initialAttacker, uint damage)
-    {
-        // A ball doesn't take any damage
+        // A ball doesn't attack, reflect, get poisoned or bleed.
         return ValueTask.CompletedTask;
     }
 

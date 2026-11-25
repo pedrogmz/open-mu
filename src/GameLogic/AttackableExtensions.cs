@@ -40,6 +40,23 @@ public static class AttackableExtensions
     }
 
     /// <summary>
+    /// Gets the player who is responsible for an attack or a kill: the attacking player itself,
+    /// the owner of an attacking pet like the Dark Raven, or the player who summoned an attacking monster.
+    /// </summary>
+    /// <param name="attacker">The attacker.</param>
+    /// <returns>The responsible player, or <c>null</c> when no player is behind the attacker.</returns>
+    public static Player? GetResponsiblePlayer(this IAttacker? attacker)
+    {
+        return attacker switch
+        {
+            Player player => player,
+            IPlayerSurrogate surrogate => surrogate.Owner,
+            Monster { SummonedBy: { } summoner } => summoner,
+            _ => null,
+        };
+    }
+
+    /// <summary>
     /// Determines whether an attack is blocked because the target or the player attacker is in a safezone.
     /// </summary>
     /// <param name="target">The attack target.</param>
@@ -328,13 +345,13 @@ public static class AttackableExtensions
     /// <returns>The calculated hit info.</returns>
     public static HitInfo GetHitInfo(this IAttackable defender, uint damage, DamageAttributes attributes, IAttacker attacker, uint manaToll = 0, SkillEntry? skill = null, uint petDamage = 0)
     {
-        var triggersHitShock = defender.GetsHitShocked(damage);
+        var triggersHitShock = !attributes.HasFlag(DamageAttributes.Bleed) && defender.GetsHitShocked(damage);
 
         if (skill?.EnsureSkillAttributes(attacker.Attributes) is { } skillAttributes
             && Rand.NextRandomBool(skillAttributes[Stats.DragonSlasherShieldDamageChance]))
         {
-            var shieldDamage = defender.Attributes[Stats.CurrentShield] * skillAttributes[Stats.DragonSlasherShieldDamageRate];
-            return new HitInfo(damage, (uint)shieldDamage, attributes, manaToll, petDamage, skill, triggersHitShock);
+            var slasherShieldDamage = defender.Attributes[Stats.CurrentShield] * skillAttributes[Stats.DragonSlasherShieldDamageRate];
+            return new HitInfo(damage, (uint)slasherShieldDamage, attributes, manaToll, petDamage, skill, triggersHitShock);
         }
 
         var shieldBypass = Rand.NextRandomBool(attacker.Attributes[Stats.ShieldBypassChance]);
@@ -345,7 +362,8 @@ public static class AttackableExtensions
 
         var shieldRatio = defender.Attributes[Stats.ShieldRatio] - attacker.Attributes[Stats.ShieldDecreaseRateIncrease];
         shieldRatio = Math.Max(0, shieldRatio);
-        return new HitInfo((uint)(damage * (1 - shieldRatio)), (uint)(damage * shieldRatio), attributes, manaToll, petDamage, skill, triggersHitShock);
+        var shieldDamage = (uint)(damage * shieldRatio);
+        return new HitInfo(damage - shieldDamage, shieldDamage, attributes, manaToll, petDamage, skill, triggersHitShock);
     }
 
     /// <summary>

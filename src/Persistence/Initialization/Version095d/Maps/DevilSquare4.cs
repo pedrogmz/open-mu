@@ -46,6 +46,12 @@ internal class DevilSquare4 : BaseMapInitializer
     protected override byte Discriminator => 4;
 
     /// <inheritdoc/>
+    /// <remarks>
+    /// Devil Square gives no zen for the killed monsters, only the rank reward of the event pays zen.
+    /// </remarks>
+    protected override bool MonstersDropZen => false;
+
+    /// <inheritdoc/>
     protected override byte SafezoneMapNumber => Noria.Number;
 
     /// <inheritdoc/>
@@ -103,10 +109,10 @@ internal class DevilSquare4 : BaseMapInitializer
                 { Stats.DefenseBase, 350 },
                 { Stats.AttackRatePvm, 525 },
                 { Stats.DefenseRatePvm, 200 },
-                { Stats.PoisonResistance, 17f / 255 },
-                { Stats.IceResistance, 17f / 255 },
-                { Stats.WaterResistance, 17f / 255 },
-                { Stats.FireResistance, 17f / 255 },
+                { Stats.IceResistance, 17 },
+                { Stats.PoisonResistance, 17 },
+                { Stats.LightningResistance, 17 },
+                { Stats.FireResistance, 17 },
             };
 
             monster.AddAttributes(attributes, this.Context, this.GameConfiguration);

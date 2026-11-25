@@ -183,6 +183,12 @@
   <data name="TheValueMustNotContain" xml:space="preserve">
     <value>{0}: Der Wert darf "{1}" nicht enthalten.</value>
   </data>
+  <data name="ShowAllLanguages" xml:space="preserve">
+    <value>Alle Sprachen anzeigen</value>
+  </data>
+  <data name="ShowSelectedLanguageOnly" xml:space="preserve">
+    <value>Nur ausgewählte Sprache anzeigen</value>
+  </data>
   <data name="PleaseSelectItemDefinition" xml:space="preserve">
     <value>&lt;Bitte eine Definition auswählen&gt;</value>
   </data>
@@ -258,8 +264,8 @@
   <data name="DiscardEntryQuestion" xml:space="preserve">
     <value>Sie erstellen gerade ein(e) '{0}'. Möchten Sie es verwerfen und neu beginnen?</value>
   </data>
-  <data name="Refresh" xml:space="preserve">
-    <value>Aktualisieren</value>
+  <data name="Reload" xml:space="preserve">
+    <value>Neu laden</value>
   </data>
   <data name="ToggleTheme" xml:space="preserve">
     <value>Design wechseln</value>
@@ -277,7 +283,7 @@
     <value>Automatisch (System)</value>
   </data>
   <data name="MapEditorShortcutPan" xml:space="preserve">
-    <value>Auf eine freie Fläche klicken und ziehen, um die Karte zu verschieben</value>
+    <value>Mit der mittleren Maustaste ziehen, um die Karte zu verschieben</value>
   </data>
   <data name="MapEditorShortcutDrag" xml:space="preserve">
     <value>STRG + Klick auf ein Objekt, um es zu ziehen</value>
@@ -459,18 +465,6 @@
   <data name="FileLoaded" xml:space="preserve">
     <value>{0} mit {1} Bytes geladen.</value>
   </data>
-  <data name="PaginationItems" xml:space="preserve">
-    <value>{0} Einträge</value>
-  </data>
-  <data name="PaginationPage" xml:space="preserve">
-    <value>Seite {0} von {1}</value>
-  </data>
-  <data name="FirstPage" xml:space="preserve">
-    <value>Erste Seite</value>
-  </data>
-  <data name="LastPage" xml:space="preserve">
-    <value>Letzte Seite</value>
-  </data>
   <data name="InvalidNumber" xml:space="preserve">
     <value>Das Feld {0} muss eine Zahl sein.</value>
   </data>
@@ -621,5 +615,14 @@ Stufe: {2} - {3}</value>
   </data>
   <data name="ZoomOut" xml:space="preserve">
     <value>Verkleinern</value>
+  </data>
+  <data name="ItemEdit_IsTimeLimited" xml:space="preserve">
+    <value>Zeitlich begrenzt</value>
+  </data>
+  <data name="ItemEdit_ExpiresAt" xml:space="preserve">
+    <value>Läuft ab am (UTC)</value>
+  </data>
+  <data name="ItemEdit_CannotBeTimeLimited" xml:space="preserve">
+    <value>Dieser Gegenstand kann nicht zeitlich begrenzt sein: nur ein Gegenstand, der angelegt und nicht verbraucht wird und nach Ablauf fallen gelassen oder an einen NPC verkauft werden kann.</value>
   </data>
 </root>

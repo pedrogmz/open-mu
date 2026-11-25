@@ -16,13 +16,11 @@
             <th class="col-1">@Resources.MinimumCharacterStatus</th>
             <th class="col-2">@Resources.Action</th>
         </TableHeader>
+        <SearchHeader>
+            <SearchInput @bind-Value="this.ChatCommandController.CommandFilter" />
+        </SearchHeader>
         <FilterHeader>
-            <th colspan="3">
-                <div class="input-group">
-                    <span class="input-group-text"><span class="oi oi-magnifying-glass" aria-hidden="true"></span></span>
-                    <input type="search" class="form-control" placeholder="@Resources.Search" @bind="@this.ChatCommandController.CommandFilter" @bind:event="oninput"/>
-                </div>
-            </th>
+            <th colspan="3"></th>
             <th>
                 <select class="form-select" @onchange="@this.OnStatusSelected">
                     <option value="" selected="@(this.ChatCommandController.StatusFilter is null)">@Resources.All</option>
@@ -80,16 +78,16 @@
             <td class="text-nowrap">
                 @if (item.IsActive)
                 {
-                    <button class="btn btn-warning me-1" @onclick="async () => await this.ChatCommandController.SetActiveAsync(item, false)">@Resources.Deactivate</button>
+                    <button type="button" class="btn btn-warning me-1" @onclick="async () => await this.ChatCommandController.SetActiveAsync(item, false)">@Resources.Deactivate</button>
                 }
                 else
                 {
-                    <button class="btn btn-success me-1" @onclick="async () => await this.ChatCommandController.SetActiveAsync(item, true)">@Resources.Activate</button>
+                    <button type="button" class="btn btn-success me-1" @onclick="async () => await this.ChatCommandController.SetActiveAsync(item, true)">@Resources.Activate</button>
                 }
 
                 @if (item.PlugIn.ConfigurationType is { })
                 {
-                    <button class="btn btn-secondary" @onclick="async () => await this.ChatCommandController.ShowConfigurationAsync(item)"><span class="oi oi-cog" aria-hidden="true"></span></button>
+                    <button type="button" title="@Resources.Configure" class="btn btn-secondary" @onclick="async () => await this.ChatCommandController.ShowConfigurationAsync(item)"><span class="oi oi-cog" aria-hidden="true"></span></button>
                 }
             </td>
         </ItemTemplate>

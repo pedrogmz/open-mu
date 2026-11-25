@@ -257,6 +257,40 @@ public static class ConnectionExtensions
     }
 
     /// <summary>
+    /// Sends a <see cref="LoginWithTicket" /> to this connection.
+    /// </summary>
+    /// <param name="connection">The connection.</param>
+    /// <param name="token">The token of the ticket: 256 random bits, encoded as base64url without padding.</param>
+    /// <param name="tickCount">The tick count.</param>
+    /// <param name="clientVersion">The client version.</param>
+    /// <param name="clientSerial">The client serial.</param>
+    /// <remarks>
+    /// Is sent by the client when: The player tries to log into the game with a login ticket instead of a password, e.g. after signing in on a website.
+    /// Causes reaction on server side: The server redeems the ticket. A ticket can be redeemed once, and only until it expires. If it's valid, the login proceeds like with a password and the server answers with a LoginResponse; if not, the result is AccountInvalid.
+    /// </remarks>
+    public static async ValueTask SendLoginWithTicketAsync(this IConnection? connection, string @token, uint @tickCount, Memory<byte> @clientVersion, Memory<byte> @clientSerial)
+    {
+        if (connection is null)
+        {
+            return;
+        }
+
+        int WritePacket()
+        {
+            var length = LoginWithTicketRef.Length;
+            var packet = new LoginWithTicketRef(connection.Output.GetSpan(length)[..length]);
+            packet.Token = @token;
+            packet.TickCount = @tickCount;
+            @clientVersion.Span.CopyTo(packet.ClientVersion);
+            @clientSerial.Span.CopyTo(packet.ClientSerial);
+
+            return packet.Header.Length;
+        }
+
+        await connection.SendAsync(WritePacket).ConfigureAwait(false);
+    }
+
+    /// <summary>
     /// Sends a <see cref="LogOut" /> to this connection.
     /// </summary>
     /// <param name="connection">The connection.</param>
@@ -5686,6 +5720,34 @@ public static class ConnectionExtensions
         {
             var length = DiscordUnlinkRequestRef.Length;
             var packet = new DiscordUnlinkRequestRef(connection.Output.GetSpan(length)[..length]);
+            return packet.Header.Length;
+        }
+
+        await connection.SendAsync(WritePacket).ConfigureAwait(false);
+    }
+
+    /// <summary>
+    /// Sends a <see cref="RoundTripRequest" /> to this connection.
+    /// </summary>
+    /// <param name="connection">The connection.</param>
+    /// <param name="token">A value of the client's choice, which the server sends back unchanged, so that the client can match the response to its request.</param>
+    /// <remarks>
+    /// Is sent by the client when: The client measures the time a message needs to the server and back, e.g. to show the player's ping.
+    /// Causes reaction on server side: The server sends a RoundTripResponse with the same token right away.
+    /// </remarks>
+    public static async ValueTask SendRoundTripRequestAsync(this IConnection? connection, uint @token)
+    {
+        if (connection is null)
+        {
+            return;
+        }
+
+        int WritePacket()
+        {
+            var length = RoundTripRequestRef.Length;
+            var packet = new RoundTripRequestRef(connection.Output.GetSpan(length)[..length]);
+            packet.Token = @token;
+
             return packet.Header.Length;
         }
 
