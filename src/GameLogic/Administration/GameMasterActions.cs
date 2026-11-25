@@ -5,6 +5,8 @@
 namespace MUnique.OpenMU.GameLogic.Administration;
 
 using MUnique.OpenMU.GameLogic.Attributes;
+using MUnique.OpenMU.GameLogic.PlugIns;
+using MUnique.OpenMU.GameLogic.PlugIns.UnlockCharacterClass;
 using MUnique.OpenMU.GameLogic.Views.Character;
 using MUnique.OpenMU.GameLogic.Views.Inventory;
 using MUnique.OpenMU.GameLogic.Views.World;
@@ -40,6 +42,13 @@ public static class GameMasterActions
         }
         else
         {
+            // Only the class unlocks: they depend on the reached level, not on how it was reached. The other
+            // level-up plugins (congratulations, milestone announcements) are meant for a level which was earned.
+            foreach (var unlockPlugIn in player.GameContext.PlugInManager.GetActivePlugInsOf<ICharacterLevelUpPlugIn>().OfType<UnlockCharacterAtLevelBase>())
+            {
+                unlockPlugIn.CharacterLeveledUp(player);
+            }
+
             await player.InvokeViewPlugInAsync<IUpdateLevelPlugIn>(p => p.UpdateLevelAsync()).ConfigureAwait(false);
         }
 

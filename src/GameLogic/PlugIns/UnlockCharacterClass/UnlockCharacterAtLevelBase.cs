@@ -4,10 +4,17 @@
 
 namespace MUnique.OpenMU.GameLogic.PlugIns.UnlockCharacterClass;
 
+using MUnique.OpenMU.GameLogic.Attributes;
+
 /// <summary>
 /// Unlocks the a character class as soon as the first character of an account reaches a certain level.
 /// </summary>
-public abstract class UnlockCharacterAtLevelBase : ICharacterLevelUpPlugIn
+/// <remarks>
+/// Besides a regular level up, the unlock is also checked when the account enters the character selection.
+/// This catches characters which got their level without a level up, e.g. by a game master,
+/// or which reached it before the plugin was activated.
+/// </remarks>
+public abstract class UnlockCharacterAtLevelBase : ICharacterLevelUpPlugIn, IPlayerStateChangedPlugIn
 {
     private readonly byte _classNumber;
     private readonly int _minimumLevel;
@@ -29,12 +36,32 @@ public abstract class UnlockCharacterAtLevelBase : ICharacterLevelUpPlugIn
     /// <inheritdoc />
     public void CharacterLeveledUp(Player player)
     {
+        this.TryUnlock(player, player.Level);
+    }
+
+    /// <inheritdoc />
+    public ValueTask PlayerStateChangedAsync(Player player, State previousState, State currentState)
+    {
+        if (currentState == PlayerState.CharacterSelection && player.Account is { } account)
+        {
+            var highestLevel = account.Characters
+                .Select(c => c.Attributes.FirstOrDefault(a => a.Definition == Stats.Level)?.Value ?? 0)
+                .DefaultIfEmpty(0)
+                .Max();
+            this.TryUnlock(player, highestLevel);
+        }
+
+        return ValueTask.CompletedTask;
+    }
+
+    private void TryUnlock(Player player, float level)
+    {
         // Server-side bots are excluded: they never create new characters, and animating several
         // characters of one account concurrently (each with its own persistence context and thus its
         // own stale copy of the account) lets two siblings pass the duplicate check below at the same
         // time - both insert the same unlock row and the account's saves keep failing with a duplicate
         // key of "PK_AccountCharacterClass" until the next restart.
-        if (player.Level >= this._minimumLevel
+        if (level >= this._minimumLevel
             && player.Account is { IsBot: false } account
             && account.UnlockedCharacterClasses.All(c => c.Number != this._classNumber))
         {
