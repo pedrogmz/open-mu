@@ -2061,6 +2061,18 @@
   <data name="LittleWarriorsCloak" xml:space="preserve">
     <value>小武者披风</value>
   </data>
+  <data name="CloakOfDeath" xml:space="preserve">
+    <value>死亡披风</value>
+  </data>
+  <data name="WingsOfChaos" xml:space="preserve">
+    <value>混沌之翼</value>
+  </data>
+  <data name="WingsOfMagic" xml:space="preserve">
+    <value>魔力之翼</value>
+  </data>
+  <data name="WingsOfLife" xml:space="preserve">
+    <value>生命之翼</value>
+  </data>
   <data name="MagicBackpack" xml:space="preserve">
     <value>魔法背包</value>
   </data>

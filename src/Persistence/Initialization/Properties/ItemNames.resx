@@ -2061,6 +2061,18 @@
   <data name="LittleWarriorsCloak" xml:space="preserve">
     <value>Little Warrior's Cloak</value>
   </data>
+  <data name="CloakOfDeath" xml:space="preserve">
+    <value>Cloak of Death</value>
+  </data>
+  <data name="WingsOfChaos" xml:space="preserve">
+    <value>Wings of Chaos</value>
+  </data>
+  <data name="WingsOfMagic" xml:space="preserve">
+    <value>Wings of Magic</value>
+  </data>
+  <data name="WingsOfLife" xml:space="preserve">
+    <value>Wings of Life</value>
+  </data>
   <data name="MagicBackpack" xml:space="preserve">
     <value>Magic Backpack</value>
   </data>

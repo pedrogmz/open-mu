@@ -359,6 +359,12 @@
   <data name="AddSmallWingsUpdatePlugIn_Description" xml:space="preserve">
     <value>补充游戏商城缺失的小王者披风、小灾难之翼、小精灵之翼、小天使之翼、小恶魔之翼和小武者披风。已有相同编号的物品保持不变。</value>
   </data>
+  <data name="AddMonsterWingsUpdatePlugIn_Name" xml:space="preserve">
+    <value>添加怪物翅膀</value>
+  </data>
+  <data name="AddMonsterWingsUpdatePlugIn_Description" xml:space="preserve">
+    <value>添加怪物翅膀：死亡披风、混沌之翼、魔力之翼和生命之翼。已有相同编号的物品保持不变。</value>
+  </data>
   <data name="FixDinorantOptionNumbersPlugIn_Name" xml:space="preserve">
     <value>修正彩云兽属性编号</value>
   </data>
