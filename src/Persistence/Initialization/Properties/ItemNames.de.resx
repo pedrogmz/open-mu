@@ -2037,6 +2037,18 @@
   <data name="LittleWarriorsCloak" xml:space="preserve">
     <value>Kleiner Kriegerumhang</value>
   </data>
+  <data name="CloakOfDeath" xml:space="preserve">
+    <value>Todesumhang</value>
+  </data>
+  <data name="WingsOfChaos" xml:space="preserve">
+    <value>Flügel des Chaos</value>
+  </data>
+  <data name="WingsOfMagic" xml:space="preserve">
+    <value>Flügel der Magie</value>
+  </data>
+  <data name="WingsOfLife" xml:space="preserve">
+    <value>Flügel des Lebens</value>
+  </data>
   <data name="ShiningJewelleryCase" xml:space="preserve">
     <value>Glänzende Schmuckschatulle</value>
   </data>
