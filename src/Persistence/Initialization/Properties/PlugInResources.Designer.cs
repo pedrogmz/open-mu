@@ -1945,6 +1945,24 @@ namespace MUnique.OpenMU.Persistence.Initialization.Properties {
                 return ResourceManager.GetString("FixCrywolfGateTerrainUpdatePlugIn_Name", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Makes the rings of the Arena walkable: removes the blocked flag of their tiles, as in the map's terrain resource. All other tiles and flags are kept..
+        /// </summary>
+        public static string UnblockArenaRingsTerrainUpdatePlugIn_Description {
+            get {
+                return ResourceManager.GetString("UnblockArenaRingsTerrainUpdatePlugIn_Description", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Unblock the Arena rings.
+        /// </summary>
+        public static string UnblockArenaRingsTerrainUpdatePlugIn_Name {
+            get {
+                return ResourceManager.GetString("UnblockArenaRingsTerrainUpdatePlugIn_Name", resourceCulture);
+            }
+        }
         
         /// <summary>
         ///   Looks up a localized string similar to This update fixes the damage absorbtion settings for items and skills..
