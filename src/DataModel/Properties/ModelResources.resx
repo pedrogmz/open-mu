@@ -6748,4 +6748,31 @@
   <data name="LordsMixLimitPeriod_SiegeCycle_Caption" xml:space="preserve">
     <value>Siege Cycle</value>
   </data>
+  <data name="Account_JewelBank_Caption" xml:space="preserve">
+    <value>Jewel Bank</value>
+  </data>
+  <data name="Account_JewelBank_Description" xml:space="preserve">
+    <value>The jewels which are stored in the jewel bank, shared by all characters of the account. Jewels are stored by their number, so they take no space in the vault or the inventory.</value>
+  </data>
+  <data name="JewelBankEntry_TypeCaption" xml:space="preserve">
+    <value>Jewel Bank Entry</value>
+  </data>
+  <data name="JewelBankEntry_TypeCaptionPlural" xml:space="preserve">
+    <value>Jewel Bank Entries</value>
+  </data>
+  <data name="JewelBankEntry_TypeDescription" xml:space="preserve">
+    <value>The stored amount of one kind of jewel in the jewel bank of an account.</value>
+  </data>
+  <data name="JewelBankEntry_Jewel_Caption" xml:space="preserve">
+    <value>Jewel</value>
+  </data>
+  <data name="JewelBankEntry_Jewel_Description" xml:space="preserve">
+    <value>The definition of the single jewel. Bundles of it are stored as the number of single jewels they hold.</value>
+  </data>
+  <data name="JewelBankEntry_Amount_Caption" xml:space="preserve">
+    <value>Amount</value>
+  </data>
+  <data name="JewelBankEntry_Amount_Description" xml:space="preserve">
+    <value>The stored number of single jewels.</value>
+  </data>
 </root>

@@ -6619,4 +6619,31 @@
   <data name="LordsMixLimitPeriod_SiegeCycle_Caption" xml:space="preserve">
     <value>攻城周期</value>
   </data>
+  <data name="Account_JewelBank_Caption" xml:space="preserve">
+    <value>宝石银行</value>
+  </data>
+  <data name="Account_JewelBank_Description" xml:space="preserve">
+    <value>存放在宝石银行中的宝石，由账号的所有角色共享。宝石按数量存放，因此不占用仓库或背包的空间。</value>
+  </data>
+  <data name="JewelBankEntry_TypeCaption" xml:space="preserve">
+    <value>宝石银行条目</value>
+  </data>
+  <data name="JewelBankEntry_TypeCaptionPlural" xml:space="preserve">
+    <value>宝石银行条目</value>
+  </data>
+  <data name="JewelBankEntry_TypeDescription" xml:space="preserve">
+    <value>账号宝石银行中某一种宝石的存放数量。</value>
+  </data>
+  <data name="JewelBankEntry_Jewel_Caption" xml:space="preserve">
+    <value>宝石</value>
+  </data>
+  <data name="JewelBankEntry_Jewel_Description" xml:space="preserve">
+    <value>单个宝石的定义。其捆绑包按所含单个宝石的数量存放。</value>
+  </data>
+  <data name="JewelBankEntry_Amount_Caption" xml:space="preserve">
+    <value>数量</value>
+  </data>
+  <data name="JewelBankEntry_Amount_Description" xml:space="preserve">
+    <value>存放的单个宝石数量。</value>
+  </data>
 </root>

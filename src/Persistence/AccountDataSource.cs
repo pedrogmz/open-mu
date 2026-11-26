@@ -28,6 +28,7 @@ public sealed class AccountDataSource : DataSourceBase<Account>
         { typeof(CharacterQuestState), a => a.Characters.SelectMany(c => c.QuestStates) },
         { typeof(QuestMonsterKillRequirementState), a => a.Characters.SelectMany(c => c.QuestStates).SelectMany(q => q.RequirementStates) },
         { typeof(WaitingItem), a => a.Characters.SelectMany(c => c.WaitingItems) },
+        { typeof(JewelBankEntry), a => a.JewelBank },
     }.AsReadOnly();
 
     private readonly IDataSource<GameConfiguration> _gameConfigurationSource;

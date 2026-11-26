@@ -12,7 +12,7 @@ namespace MUnique.OpenMU.Persistence.EntityFramework.CompiledModels.ForTradeCont
     public partial class TradeContextModel
     {
         private TradeContextModel()
-            : base(skipDetectChanges: false, modelId: new Guid("55de8d65-3cae-4e09-923d-3ebe17ffe736"), entityTypeCount: 50)
+            : base(skipDetectChanges: false, modelId: new Guid("6bd3e1aa-d280-44fc-a3ed-09a9628b864a"), entityTypeCount: 51)
         {
         }
 
@@ -54,6 +54,7 @@ namespace MUnique.OpenMU.Persistence.EntityFramework.CompiledModels.ForTradeCont
             var itemDropItemGroupItemDefinition = ItemDropItemGroupItemDefinitionEntityType.Create(this);
             var itemItemOfItemSet = ItemItemOfItemSetEntityType.Create(this);
             var itemOptionLink = ItemOptionLinkEntityType.Create(this);
+            var jewelBankEntry = JewelBankEntryEntityType.Create(this);
             var letterBody = LetterBodyEntityType.Create(this);
             var letterHeader = LetterHeaderEntityType.Create(this);
             var loginTicket = LoginTicketEntityType.Create(this);
@@ -88,6 +89,7 @@ namespace MUnique.OpenMU.Persistence.EntityFramework.CompiledModels.ForTradeCont
             ItemAppearanceItemOptionTypeEntityType.CreateForeignKey1(itemAppearanceItemOptionType, itemAppearance);
             ItemItemOfItemSetEntityType.CreateForeignKey1(itemItemOfItemSet, item);
             ItemOptionLinkEntityType.CreateForeignKey1(itemOptionLink, item);
+            JewelBankEntryEntityType.CreateForeignKey1(jewelBankEntry, account);
             LetterBodyEntityType.CreateForeignKey1(letterBody, letterHeader);
             LetterBodyEntityType.CreateForeignKey2(letterBody, appearanceData);
             LetterHeaderEntityType.CreateForeignKey1(letterHeader, character);
@@ -137,6 +139,7 @@ namespace MUnique.OpenMU.Persistence.EntityFramework.CompiledModels.ForTradeCont
             ItemDropItemGroupItemDefinitionEntityType.CreateAnnotations(itemDropItemGroupItemDefinition);
             ItemItemOfItemSetEntityType.CreateAnnotations(itemItemOfItemSet);
             ItemOptionLinkEntityType.CreateAnnotations(itemOptionLink);
+            JewelBankEntryEntityType.CreateAnnotations(jewelBankEntry);
             LetterBodyEntityType.CreateAnnotations(letterBody);
             LetterHeaderEntityType.CreateAnnotations(letterHeader);
             LoginTicketEntityType.CreateAnnotations(loginTicket);
