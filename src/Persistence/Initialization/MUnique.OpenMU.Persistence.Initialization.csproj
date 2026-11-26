@@ -92,6 +92,7 @@
     <None Remove="Resources\Terrain80.att" />
     <None Remove="Resources\Terrain81.att" />
     <None Remove="Resources\Terrain82.att" />
+    <None Remove="Resources\Terrain83.att" />
     <None Remove="Resources\Terrain9.att" />
   </ItemGroup>
 
@@ -171,6 +172,7 @@
     <EmbeddedResource Include="Resources\Terrain80.att" />
     <EmbeddedResource Include="Resources\Terrain81.att" />
     <EmbeddedResource Include="Resources\Terrain82.att" />
+    <EmbeddedResource Include="Resources\Terrain83.att" />
     <EmbeddedResource Include="Resources\Terrain9.att" />
   </ItemGroup>
 

@@ -168,6 +168,13 @@ namespace MUnique.OpenMU.Persistence.Initialization.Properties {
             }
         }
 
+        /// <summary>Gets Egypt from the configuration name resources.</summary>
+        public static string Egypt {
+            get {
+                return ResourceManager.GetString("Egypt", resourceCulture);
+            }
+        }
+
         /// <summary>Gets KanturuRuins3 from the configuration name resources.</summary>
         public static string KanturuRuins3 {
             get {

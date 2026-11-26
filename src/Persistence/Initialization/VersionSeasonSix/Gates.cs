@@ -6,6 +6,7 @@ namespace MUnique.OpenMU.Persistence.Initialization.VersionSeasonSix;
 
 using MUnique.OpenMU.DataModel.Configuration;
 using MUnique.OpenMU.Interfaces;
+using MUnique.OpenMU.Persistence.Initialization.VersionSeasonSix.Maps;
 
 /// <summary>
 /// Gates initialization.
@@ -16,6 +17,16 @@ public class Gates : InitializerBase
     /// The area of the spawn gate of the santa village, where the invitation to the santa village warps the player to.
     /// </summary>
     internal static readonly (byte X1, byte Y1, byte X2, byte Y2) SantaVillageSpawnGate = (221, 23, 225, 27);
+
+    /// <summary>
+    /// The warp list entry to Egypt. The client's Data/Maps/Warps.json has the same entry.
+    /// </summary>
+    internal static readonly (ushort Index, int Costs, int LevelRequirement) EgyptWarp = (49, 10000, 10);
+
+    /// <summary>
+    /// The number of Egypt's spawn gate, which the warp list entry targets.
+    /// </summary>
+    internal const short EgyptWarpGate = 345;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="Gates" /> class.
@@ -89,6 +100,7 @@ public class Gates : InitializerBase
         this.GameConfiguration.WarpList.Add(this.CreateWarpInfo(45, LocalizedString.FromResource(() => WarpNames.KanturuRuins3), 15000, 160, gates[334]));
         this.GameConfiguration.WarpList.Add(this.CreateWarpInfo(46, LocalizedString.FromResource(() => WarpNames.Karutan1), 13000, 170, gates[335]));
         this.GameConfiguration.WarpList.Add(this.CreateWarpInfo(47, LocalizedString.FromResource(() => WarpNames.Karutan2), 14000, 170, gates[344]));
+        this.GameConfiguration.WarpList.Add(this.CreateWarpInfo(EgyptWarp.Index, LocalizedString.FromResource(() => WarpNames.Egypt), EgyptWarp.Costs, EgyptWarp.LevelRequirement, gates[EgyptWarpGate]));
         this.GameConfiguration.WarpList.Add(this.CreateWarpInfo(48, LocalizedString.FromResource(() => WarpNames.LaCleon), 15000, 280, gates[287], isWarpable: false));
     }
 
@@ -466,6 +478,9 @@ public class Gates : InitializerBase
         // Karutan 2
         targetGates.Add(344, this.CreateExitGate(maps[81], 162, 16, 163, 17, 5));
         targetGates.Add(341, this.CreateExitGate(maps[81], 162, 12, 164, 14, 5));
+
+        // Egypt: its map initializer creates its spawn gate.
+        targetGates.Add(EgyptWarpGate, maps[Egypt.Number].ExitGates.First(gate => gate.IsSpawnGate));
 
         return targetGates;
     }

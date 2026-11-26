@@ -1292,6 +1292,24 @@ namespace MUnique.OpenMU.Persistence.Initialization.Properties {
                 return ResourceManager.GetString("AddSocketCountTablesUpdatePlugIn_Description", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Add Egypt map
+        /// </summary>
+        public static string AddEgyptMapUpdatePlugIn_Name {
+            get {
+                return ResourceManager.GetString("AddEgyptMapUpdatePlugIn_Name", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to This update adds the custom map Egypt (number 82), its spawn gate and its warp list entry..
+        /// </summary>
+        public static string AddEgyptMapUpdatePlugIn_Description {
+            get {
+                return ResourceManager.GetString("AddEgyptMapUpdatePlugIn_Description", resourceCulture);
+            }
+        }
         
         /// <summary>
         ///   Looks up a localized string similar to Socket count tables.
