@@ -75,6 +75,18 @@
   <data name="CapeOfOverruleOptions" xml:space="preserve">
     <value>Cape of Overrule Options</value>
   </data>
+  <data name="CloakOfDeathOptions" xml:space="preserve">
+    <value>Cloak of Death Options</value>
+  </data>
+  <data name="WingsOfChaosOptions" xml:space="preserve">
+    <value>Wings of Chaos Options</value>
+  </data>
+  <data name="WingsOfMagicOptions" xml:space="preserve">
+    <value>Wings of Magic Options</value>
+  </data>
+  <data name="WingsOfLifeOptions" xml:space="preserve">
+    <value>Wings of Life Options</value>
+  </data>
   <data name="CetoAncientSet" xml:space="preserve">
     <value>Ceto (Ancient Set)</value>
   </data>

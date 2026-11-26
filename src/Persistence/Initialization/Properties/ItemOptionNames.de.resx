@@ -156,6 +156,18 @@
   <data name="CapeOfOverruleOptions" xml:space="preserve">
     <value>Optionen des Umhangs der Herrschaft</value>
   </data>
+  <data name="CloakOfDeathOptions" xml:space="preserve">
+    <value>Optionen des Todesumhangs</value>
+  </data>
+  <data name="WingsOfChaosOptions" xml:space="preserve">
+    <value>Optionen der Flügel des Chaos</value>
+  </data>
+  <data name="WingsOfMagicOptions" xml:space="preserve">
+    <value>Optionen der Flügel der Magie</value>
+  </data>
+  <data name="WingsOfLifeOptions" xml:space="preserve">
+    <value>Optionen der Flügel des Lebens</value>
+  </data>
   <data name="CompleteSetBonusLevel10" xml:space="preserve">
     <value>Bonus für vollständiges Set (Level 10)</value>
   </data>

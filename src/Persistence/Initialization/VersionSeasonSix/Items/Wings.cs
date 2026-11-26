@@ -83,6 +83,7 @@ public class Wings : WingsInitializerBase
         this.CreateWing(5, 3, 3, LocalizedString.FromResource(() => ItemNames.WingsOfDragon), 150, 45, 200, 215, CharacterClasses.AllKnights, this.BuildOptions((0b00, OptionType.HealthRecover), (0b10, OptionType.PhysDamage)), 32, 25, this._damageIncreaseByLevelTableSecond, secondWingOptions, movementSpeed: MovementSpeedConstants.FastWingMovementSpeed);
         this.CreateWing(6, 4, 2, LocalizedString.FromResource(() => ItemNames.WingsOfDarkness), 150, 40, 200, 215, CharacterClasses.AllMGs, this.BuildOptions((0b00, OptionType.WizDamage), (0b10, OptionType.PhysDamage)), 32, 25, this._damageIncreaseByLevelTableSecond, secondWingOptions);
         this.CreateWing(42, 4, 3, LocalizedString.FromResource(() => ItemNames.WingsOfDespair), 150, 30, 200, 215, CharacterClasses.AllSummoners, this.BuildOptions((0b00, OptionType.CurseDamage), (0b10, OptionType.WizDamage)), 32, 25, this._damageIncreaseByLevelTableSecond, secondWingOptions);
+        this.CreateMonsterWings(secondWingOptions);
 
         // The capes are a bit of a hybrid. Their damage gets increased like first wings, but they start slightly lower than 2nd wings.
         this.CreateWing(49, 2, 3, LocalizedString.FromResource(() => ItemNames.CapeOfFighter), 180, 15, 200, 180, CharacterClasses.AllFighters, this.BuildOptions((0b00, OptionType.HealthRecover), (0b10, OptionType.PhysDamage)), 20, 10, this._damageIncreaseByLevelTable, secondWingOptions);
@@ -124,6 +125,27 @@ public class Wings : WingsInitializerBase
         return this.CreateSmallWings();
     }
 
+    /// <summary>
+    /// Adds the monster wings (Cloak of Death, Wings of Chaos, Wings of Magic and Wings of Life) to an existing
+    /// configuration, which was created before they were part of it.
+    /// </summary>
+    /// <remarks>
+    /// The monster wings use the same item level bonus tables and excellent options as the second wings, so the existing
+    /// ones of the Wings of Spirits are used. Only when they can't be found, new ones are created.
+    /// </remarks>
+    /// <returns>The created items. Monster wings which already exist are not created again.</returns>
+    internal IReadOnlyList<ItemDefinition> AddMonsterWings()
+    {
+        var wingsOfSpirits = this.GameConfiguration.Items.FirstOrDefault(item => item is { Group: 12, Number: 3 });
+        this._absorbByLevelTable = GetBonusTable(wingsOfSpirits, Stats.DamageReceiveDecrement) ?? this.CreateAbsorbBonusPerLevel();
+        this._damageIncreaseByLevelTableSecond = GetBonusTable(wingsOfSpirits, Stats.AttackDamageIncrease) ?? this.CreateDamageIncreaseBonusPerLevelSecondWings();
+        this._defenseBonusByLevelTable = GetBonusTable(wingsOfSpirits, Stats.DefenseBase) ?? this.CreateBonusDefensePerLevel();
+        var secondWingOptionsId = GuidHelper.CreateGuid<ItemOptionDefinition>(ItemOptionDefinitionNumbers.Wing2nd);
+        var secondWingOptions = this.GameConfiguration.ItemOptions.FirstOrDefault(option => option.GetId() == secondWingOptionsId)
+                                ?? this.CreateSecondClassWingOptions();
+        return this.CreateMonsterWings(secondWingOptions);
+    }
+
     private static ItemLevelBonusTable? GetBonusTable(ItemDefinition? item, AttributeDefinition targetAttribute)
     {
         return item?.BasePowerUpAttributes.FirstOrDefault(powerUp => powerUp.TargetAttribute == targetAttribute)?.BonusPerLevelTable;
@@ -152,6 +174,39 @@ public class Wings : WingsInitializerBase
         };
 
         return created.OfType<ItemDefinition>().ToList();
+    }
+
+    /// <summary>
+    /// Creates the monster wings ("2.5 wings"): Cloak of Death, Wings of Chaos, Wings of Magic and Wings of Life.
+    /// </summary>
+    /// <remarks>
+    /// Size, defense, classes, drop level, durability and level requirement are the ones of the game client's item data.
+    /// Damage increase, absorption, their growth per level and the excellent options are the ones of the second wings,
+    /// as the game client's tooltip shows them.
+    /// </remarks>
+    /// <param name="secondWingOptions">The excellent options of the second wings.</param>
+    /// <returns>The created items. Monster wings which already exist are not created again.</returns>
+    private IReadOnlyList<ItemDefinition> CreateMonsterWings(ItemOptionDefinition secondWingOptions)
+    {
+        var created = new List<ItemDefinition?>
+        {
+            this.CreateMonsterWing(262, 2, 3, LocalizedString.FromResource(() => ItemNames.CloakOfDeath), 27, CharacterClasses.AllLords | CharacterClasses.AllFighters, this.BuildOptions((0b00, OptionType.HealthRecover), (0b10, OptionType.PhysDamage)), secondWingOptions),
+            this.CreateMonsterWing(263, 4, 3, LocalizedString.FromResource(() => ItemNames.WingsOfChaos), 46, CharacterClasses.BladeKnightAndBladeMaster | CharacterClasses.AllMGs, this.BuildOptions((0b00, OptionType.HealthRecover), (0b10, OptionType.PhysDamage)), secondWingOptions),
+            this.CreateMonsterWing(264, 4, 3, LocalizedString.FromResource(() => ItemNames.WingsOfMagic), 37, CharacterClasses.SoulMasterAndGrandMaster | CharacterClasses.AllMGs | CharacterClasses.BloodySummonerAndDimensionMaster, this.BuildOptions((0b00, OptionType.HealthRecover), (0b10, OptionType.WizDamage)), secondWingOptions),
+            this.CreateMonsterWing(265, 4, 3, LocalizedString.FromResource(() => ItemNames.WingsOfLife), 37, CharacterClasses.MuseElfAndHighElf, this.BuildOptions((0b10, OptionType.HealthRecover), (0b00, OptionType.PhysDamage)), secondWingOptions),
+        };
+
+        return created.OfType<ItemDefinition>().ToList();
+    }
+
+    private ItemDefinition? CreateMonsterWing(short number, byte width, byte height, LocalizedString name, int defense, CharacterClasses characterClasses, IEnumerable<IncreasableItemOption> possibleOptions, ItemOptionDefinition secondWingOptions)
+    {
+        if (this.GameConfiguration.Items.Any(item => item.Group == 12 && item.Number == number))
+        {
+            return null;
+        }
+
+        return this.CreateWing(number, width, height, name, 150, defense, 210, 290, characterClasses, possibleOptions, 32, 25, this._damageIncreaseByLevelTableSecond!, secondWingOptions);
     }
 
     private ItemDefinition? CreateSmallWing(byte number, byte width, byte height, LocalizedString name, int defense, CharacterClasses characterClasses, int damageIncreaseAndAbsorbInitial)
@@ -228,7 +283,7 @@ public class Wings : WingsInitializerBase
         }
     }
 
-    private ItemDefinition CreateWing(byte number, byte width, byte height, LocalizedString name, byte dropLevel, int defense, byte durability, int levelRequirement, CharacterClasses characterClasses, IEnumerable<IncreasableItemOption> possibleOptions, int damageIncreaseInitial, int damageAbsorbInitial, ItemLevelBonusTable damageIncreasePerLevel, ItemOptionDefinition? wingOptionDefinition, float movementSpeed = MovementSpeedConstants.DefaultWingMovementSpeed)
+    private ItemDefinition CreateWing(short number, byte width, byte height, LocalizedString name, byte dropLevel, int defense, byte durability, int levelRequirement, CharacterClasses characterClasses, IEnumerable<IncreasableItemOption> possibleOptions, int damageIncreaseInitial, int damageAbsorbInitial, ItemLevelBonusTable damageIncreasePerLevel, ItemOptionDefinition? wingOptionDefinition, float movementSpeed = MovementSpeedConstants.DefaultWingMovementSpeed)
     {
         var wing = this.CreateWing(number, width, height, name, dropLevel, defense, durability, levelRequirement, characterClasses, movementSpeed);
         if (wingOptionDefinition != null)
@@ -262,6 +317,10 @@ public class Wings : WingsInitializerBase
             40 => LocalizedString.FromResource(() => ItemOptionNames.CapeOfEmperorOptions),
             43 => LocalizedString.FromResource(() => ItemOptionNames.WingOfDimensionOptions),
             50 => LocalizedString.FromResource(() => ItemOptionNames.CapeOfOverruleOptions),
+            262 => LocalizedString.FromResource(() => ItemOptionNames.CloakOfDeathOptions),
+            263 => LocalizedString.FromResource(() => ItemOptionNames.WingsOfChaosOptions),
+            264 => LocalizedString.FromResource(() => ItemOptionNames.WingsOfMagicOptions),
+            265 => LocalizedString.FromResource(() => ItemOptionNames.WingsOfLifeOptions),
             _ => new LocalizedString($"{name.ValueInNeutralLanguage} Options"),
         };
         optionDefinition.AddChance = 0.25f;
@@ -280,7 +339,7 @@ public class Wings : WingsInitializerBase
         return wing;
     }
 
-    private ItemDefinition CreateWing(byte number, byte width, byte height, LocalizedString name, byte dropLevel, int defense, byte durability, int levelRequirement, CharacterClasses characterClasses, float movementSpeed = MovementSpeedConstants.DefaultWingMovementSpeed)
+    private ItemDefinition CreateWing(short number, byte width, byte height, LocalizedString name, byte dropLevel, int defense, byte durability, int levelRequirement, CharacterClasses characterClasses, float movementSpeed = MovementSpeedConstants.DefaultWingMovementSpeed)
     {
         var wing = this.Context.CreateNew<ItemDefinition>();
         this.GameConfiguration.Items.Add(wing);

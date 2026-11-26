@@ -1301,6 +1301,13 @@ namespace MUnique.OpenMU.Persistence.Initialization.Properties {
                 return ResourceManager.GetString("AddEgyptMapUpdatePlugIn_Name", resourceCulture);
             }
         }
+        ///   Looks up a localized string similar to Add monster wings.
+        /// </summary>
+        public static string AddMonsterWingsUpdatePlugIn_Name {
+            get {
+                return ResourceManager.GetString("AddMonsterWingsUpdatePlugIn_Name", resourceCulture);
+            }
+        }
 
         /// <summary>
         ///   Looks up a localized string similar to This update adds the custom map Egypt (number 82), its spawn gate and its warp list entry, and lets every game server host it..
@@ -1308,6 +1315,13 @@ namespace MUnique.OpenMU.Persistence.Initialization.Properties {
         public static string AddEgyptMapUpdatePlugIn_Description {
             get {
                 return ResourceManager.GetString("AddEgyptMapUpdatePlugIn_Description", resourceCulture);
+            }
+        }
+        ///   Looks up a localized string similar to This update adds the monster wings: Cloak of Death, Wings of Chaos, Wings of Magic and Wings of Life. Existing items with the same numbers are left unchanged..
+        /// </summary>
+        public static string AddMonsterWingsUpdatePlugIn_Description {
+            get {
+                return ResourceManager.GetString("AddMonsterWingsUpdatePlugIn_Description", resourceCulture);
             }
         }
         

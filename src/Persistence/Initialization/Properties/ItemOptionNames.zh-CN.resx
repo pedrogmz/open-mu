@@ -75,6 +75,18 @@
   <data name="CapeOfOverruleOptions" xml:space="preserve">
     <value>斗皇披风属性</value>
   </data>
+  <data name="CloakOfDeathOptions" xml:space="preserve">
+    <value>死亡披风属性</value>
+  </data>
+  <data name="WingsOfChaosOptions" xml:space="preserve">
+    <value>混沌之翼属性</value>
+  </data>
+  <data name="WingsOfMagicOptions" xml:space="preserve">
+    <value>魔力之翼属性</value>
+  </data>
+  <data name="WingsOfLifeOptions" xml:space="preserve">
+    <value>生命之翼属性</value>
+  </data>
   <data name="CetoAncientSet" xml:space="preserve">
     <value>安吉拉的藤套装属性</value>
   </data>

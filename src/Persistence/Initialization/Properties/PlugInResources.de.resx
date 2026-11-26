@@ -788,6 +788,12 @@
   <data name="AddSmallWingsUpdatePlugIn_Description" xml:space="preserve">
     <value>Diese Aktualisierung fügt die fehlenden kleinen Flügel und Umhänge des Item-Shops hinzu: Small Cape of Lord, Small Wing of Curse, Small Wings of Elf, Small Wings of Heaven, Small Wings of Satan und Little Warrior's Cloak. Vorhandene Gegenstände mit denselben Nummern bleiben unverändert.</value>
   </data>
+  <data name="AddMonsterWingsUpdatePlugIn_Name" xml:space="preserve">
+    <value>Monsterflügel hinzufügen</value>
+  </data>
+  <data name="AddMonsterWingsUpdatePlugIn_Description" xml:space="preserve">
+    <value>Diese Aktualisierung fügt die Monsterflügel hinzu: Cloak of Death, Wings of Chaos, Wings of Magic und Wings of Life. Vorhandene Gegenstände mit denselben Nummern bleiben unverändert.</value>
+  </data>
   <data name="FixDinorantOptionNumbersPlugIn_Name" xml:space="preserve">
     <value>Korrektur der Optionsnummern des Dinorant</value>
   </data>

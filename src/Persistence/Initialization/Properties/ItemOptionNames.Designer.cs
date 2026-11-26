@@ -196,6 +196,34 @@ namespace MUnique.OpenMU.Persistence.Initialization.Properties {
             }
         }
 
+        /// <summary>Gets CloakOfDeathOptions from the configuration name resources.</summary>
+        public static string CloakOfDeathOptions {
+            get {
+                return ResourceManager.GetString("CloakOfDeathOptions", resourceCulture);
+            }
+        }
+
+        /// <summary>Gets WingsOfChaosOptions from the configuration name resources.</summary>
+        public static string WingsOfChaosOptions {
+            get {
+                return ResourceManager.GetString("WingsOfChaosOptions", resourceCulture);
+            }
+        }
+
+        /// <summary>Gets WingsOfMagicOptions from the configuration name resources.</summary>
+        public static string WingsOfMagicOptions {
+            get {
+                return ResourceManager.GetString("WingsOfMagicOptions", resourceCulture);
+            }
+        }
+
+        /// <summary>Gets WingsOfLifeOptions from the configuration name resources.</summary>
+        public static string WingsOfLifeOptions {
+            get {
+                return ResourceManager.GetString("WingsOfLifeOptions", resourceCulture);
+            }
+        }
+
         /// <summary>Gets CetoAncientSet from the configuration name resources.</summary>
         public static string CetoAncientSet {
             get {

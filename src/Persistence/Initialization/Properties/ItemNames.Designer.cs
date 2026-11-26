@@ -4830,6 +4830,34 @@ namespace MUnique.OpenMU.Persistence.Initialization.Properties {
             }
         }
 
+        /// <summary>Gets CloakOfDeath from the configuration name resources.</summary>
+        public static string CloakOfDeath {
+            get {
+                return ResourceManager.GetString("CloakOfDeath", resourceCulture);
+            }
+        }
+
+        /// <summary>Gets WingsOfChaos from the configuration name resources.</summary>
+        public static string WingsOfChaos {
+            get {
+                return ResourceManager.GetString("WingsOfChaos", resourceCulture);
+            }
+        }
+
+        /// <summary>Gets WingsOfMagic from the configuration name resources.</summary>
+        public static string WingsOfMagic {
+            get {
+                return ResourceManager.GetString("WingsOfMagic", resourceCulture);
+            }
+        }
+
+        /// <summary>Gets WingsOfLife from the configuration name resources.</summary>
+        public static string WingsOfLife {
+            get {
+                return ResourceManager.GetString("WingsOfLife", resourceCulture);
+            }
+        }
+
         /// <summary>Gets MagicBackpack from the configuration name resources.</summary>
         public static string MagicBackpack {
             get {
