@@ -1981,6 +1981,24 @@ namespace MUnique.OpenMU.Persistence.Initialization.Properties {
                 return ResourceManager.GetString("UnblockArenaRingsTerrainUpdatePlugIn_Name", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Sets the maximum value of the base strength, agility, vitality, energy and leadership to 65000, because the client shows them as unsigned 16-bit integers. A lower configured maximum is kept..
+        /// </summary>
+        public static string LimitBaseStatsPlugInBase_Description {
+            get {
+                return ResourceManager.GetString("LimitBaseStatsPlugInBase_Description", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Limit the base stats to 65000.
+        /// </summary>
+        public static string LimitBaseStatsPlugInBase_Name {
+            get {
+                return ResourceManager.GetString("LimitBaseStatsPlugInBase_Name", resourceCulture);
+            }
+        }
         
         /// <summary>
         ///   Looks up a localized string similar to This update fixes the damage absorbtion settings for items and skills..
