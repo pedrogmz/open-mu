@@ -105,6 +105,7 @@ public static class IntroducedGameVersions
         [(79, 0)] = GameVersion.Season5Episode3, // LorenMarket
         [(80, 0)] = GameVersion.Season6Episode1, // Karutan 1
         [(81, 0)] = GameVersion.Season6Episode1, // Karutan 2
+        [(82, 0)] = GameVersion.Season6Episode3, // Egypt, a custom map of this server
     };
 
     /// <summary>

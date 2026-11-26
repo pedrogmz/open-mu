@@ -1082,4 +1082,10 @@
   <data name="DevilSquareRewardTiersUpdatePlugIn_Description" xml:space="preserve">
     <value>Konfiguriert die Belohnungen des Devil Square in Stufen, sodass jeder platzierte Spieler eine Belohnung erhält statt nur die Ränge 1 bis 4: bis zu sechs Spieler nach Rang, bei mehr Spielern nach Rang-Prozentsatz. Die Beträge der Ränge 1 bis 4 bleiben als Beträge der Stufen 1 bis 4 erhalten.</value>
   </data>
+  <data name="AddEgyptMapUpdatePlugIn_Name" xml:space="preserve">
+    <value>Karte Ägypten hinzufügen</value>
+  </data>
+  <data name="AddEgyptMapUpdatePlugIn_Description" xml:space="preserve">
+    <value>Diese Aktualisierung fügt die eigene Karte Ägypten (Nummer 82), ihr Startportal und ihren Eintrag in der Warp-Liste hinzu und lässt jeden Spielserver sie bereitstellen.</value>
+  </data>
 </root>
