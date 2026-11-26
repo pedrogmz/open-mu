@@ -532,6 +532,13 @@ namespace MUnique.OpenMU.Persistence.Initialization.Properties {
             }
         }
 
+        /// <summary>Gets Egypt from the configuration name resources.</summary>
+        public static string Egypt {
+            get {
+                return ResourceManager.GetString("Egypt", resourceCulture);
+            }
+        }
+
         /// <summary>Gets Arena from the configuration name resources.</summary>
         public static string Arena {
             get {
