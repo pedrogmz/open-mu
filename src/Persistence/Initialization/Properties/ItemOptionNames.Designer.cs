@@ -224,6 +224,62 @@ namespace MUnique.OpenMU.Persistence.Initialization.Properties {
             }
         }
 
+        /// <summary>Gets WingsOfElysiumOptions from the configuration name resources.</summary>
+        public static string WingsOfElysiumOptions {
+            get {
+                return ResourceManager.GetString("WingsOfElysiumOptions", resourceCulture);
+            }
+        }
+
+        /// <summary>Gets WingsOfFlameGodOptions from the configuration name resources.</summary>
+        public static string WingsOfFlameGodOptions {
+            get {
+                return ResourceManager.GetString("WingsOfFlameGodOptions", resourceCulture);
+            }
+        }
+
+        /// <summary>Gets WingOfCelestialBodyOptions from the configuration name resources.</summary>
+        public static string WingOfCelestialBodyOptions {
+            get {
+                return ResourceManager.GetString("WingOfCelestialBodyOptions", resourceCulture);
+            }
+        }
+
+        /// <summary>Gets WingsOfAnnihilationOptions from the configuration name resources.</summary>
+        public static string WingsOfAnnihilationOptions {
+            get {
+                return ResourceManager.GetString("WingsOfAnnihilationOptions", resourceCulture);
+            }
+        }
+
+        /// <summary>Gets CloakOfDominatorOptions from the configuration name resources.</summary>
+        public static string CloakOfDominatorOptions {
+            get {
+                return ResourceManager.GetString("CloakOfDominatorOptions", resourceCulture);
+            }
+        }
+
+        /// <summary>Gets WingsOfOtherWorldOptions from the configuration name resources.</summary>
+        public static string WingsOfOtherWorldOptions {
+            get {
+                return ResourceManager.GetString("WingsOfOtherWorldOptions", resourceCulture);
+            }
+        }
+
+        /// <summary>Gets CloakOfJudgmentOptions from the configuration name resources.</summary>
+        public static string CloakOfJudgmentOptions {
+            get {
+                return ResourceManager.GetString("CloakOfJudgmentOptions", resourceCulture);
+            }
+        }
+
+        /// <summary>Gets CloakOfIsolationOptions from the configuration name resources.</summary>
+        public static string CloakOfIsolationOptions {
+            get {
+                return ResourceManager.GetString("CloakOfIsolationOptions", resourceCulture);
+            }
+        }
+
         /// <summary>Gets CetoAncientSet from the configuration name resources.</summary>
         public static string CetoAncientSet {
             get {

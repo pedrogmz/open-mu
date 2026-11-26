@@ -214,7 +214,7 @@ internal class ItemStatProfilesDataTest
             "secondTierWing: 8",
             "shield: 22",
             "smallWing: 6",
-            "thirdTierWing: 7",
+            "thirdTierWing: 15",
             "weapon: 113",
         }));
     }

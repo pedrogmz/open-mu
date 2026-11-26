@@ -87,6 +87,30 @@
   <data name="WingsOfLifeOptions" xml:space="preserve">
     <value>生命之翼属性</value>
   </data>
+  <data name="WingsOfElysiumOptions" xml:space="preserve">
+    <value>极乐之翼属性</value>
+  </data>
+  <data name="WingsOfFlameGodOptions" xml:space="preserve">
+    <value>炎神之翼属性</value>
+  </data>
+  <data name="WingOfCelestialBodyOptions" xml:space="preserve">
+    <value>天体之翼属性</value>
+  </data>
+  <data name="WingsOfAnnihilationOptions" xml:space="preserve">
+    <value>毁灭之翼属性</value>
+  </data>
+  <data name="CloakOfDominatorOptions" xml:space="preserve">
+    <value>统治者披风属性</value>
+  </data>
+  <data name="WingsOfOtherWorldOptions" xml:space="preserve">
+    <value>异界之翼属性</value>
+  </data>
+  <data name="CloakOfJudgmentOptions" xml:space="preserve">
+    <value>审判披风属性</value>
+  </data>
+  <data name="CloakOfIsolationOptions" xml:space="preserve">
+    <value>孤立披风属性</value>
+  </data>
   <data name="CetoAncientSet" xml:space="preserve">
     <value>安吉拉的藤套装属性</value>
   </data>

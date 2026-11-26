@@ -2049,6 +2049,30 @@
   <data name="WingsOfLife" xml:space="preserve">
     <value>Flügel des Lebens</value>
   </data>
+  <data name="WingsOfElysium" xml:space="preserve">
+    <value>Flügel von Elysium</value>
+  </data>
+  <data name="WingsOfFlameGod" xml:space="preserve">
+    <value>Flügel des Flammengottes</value>
+  </data>
+  <data name="WingOfCelestialBody" xml:space="preserve">
+    <value>Flügel des Himmelskörpers</value>
+  </data>
+  <data name="WingsOfAnnihilation" xml:space="preserve">
+    <value>Flügel der Vernichtung</value>
+  </data>
+  <data name="CloakOfDominator" xml:space="preserve">
+    <value>Umhang des Beherrschers</value>
+  </data>
+  <data name="WingsOfOtherWorld" xml:space="preserve">
+    <value>Flügel der Anderswelt</value>
+  </data>
+  <data name="CloakOfJudgment" xml:space="preserve">
+    <value>Umhang des Gerichts</value>
+  </data>
+  <data name="CloakOfIsolation" xml:space="preserve">
+    <value>Umhang der Isolation</value>
+  </data>
   <data name="ShiningJewelleryCase" xml:space="preserve">
     <value>Glänzende Schmuckschatulle</value>
   </data>

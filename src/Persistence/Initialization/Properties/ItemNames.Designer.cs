@@ -4858,6 +4858,62 @@ namespace MUnique.OpenMU.Persistence.Initialization.Properties {
             }
         }
 
+        /// <summary>Gets WingsOfElysium from the configuration name resources.</summary>
+        public static string WingsOfElysium {
+            get {
+                return ResourceManager.GetString("WingsOfElysium", resourceCulture);
+            }
+        }
+
+        /// <summary>Gets WingsOfFlameGod from the configuration name resources.</summary>
+        public static string WingsOfFlameGod {
+            get {
+                return ResourceManager.GetString("WingsOfFlameGod", resourceCulture);
+            }
+        }
+
+        /// <summary>Gets WingOfCelestialBody from the configuration name resources.</summary>
+        public static string WingOfCelestialBody {
+            get {
+                return ResourceManager.GetString("WingOfCelestialBody", resourceCulture);
+            }
+        }
+
+        /// <summary>Gets WingsOfAnnihilation from the configuration name resources.</summary>
+        public static string WingsOfAnnihilation {
+            get {
+                return ResourceManager.GetString("WingsOfAnnihilation", resourceCulture);
+            }
+        }
+
+        /// <summary>Gets CloakOfDominator from the configuration name resources.</summary>
+        public static string CloakOfDominator {
+            get {
+                return ResourceManager.GetString("CloakOfDominator", resourceCulture);
+            }
+        }
+
+        /// <summary>Gets WingsOfOtherWorld from the configuration name resources.</summary>
+        public static string WingsOfOtherWorld {
+            get {
+                return ResourceManager.GetString("WingsOfOtherWorld", resourceCulture);
+            }
+        }
+
+        /// <summary>Gets CloakOfJudgment from the configuration name resources.</summary>
+        public static string CloakOfJudgment {
+            get {
+                return ResourceManager.GetString("CloakOfJudgment", resourceCulture);
+            }
+        }
+
+        /// <summary>Gets CloakOfIsolation from the configuration name resources.</summary>
+        public static string CloakOfIsolation {
+            get {
+                return ResourceManager.GetString("CloakOfIsolation", resourceCulture);
+            }
+        }
+
         /// <summary>Gets MagicBackpack from the configuration name resources.</summary>
         public static string MagicBackpack {
             get {
