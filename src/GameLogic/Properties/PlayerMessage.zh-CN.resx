@@ -54,4 +54,13 @@
   <data name="LordsMixLimitReached" xml:space="preserve">
     <value>领主合成的次数已达上限，下一个周期可再次使用。</value>
   </data>
+  <data name="JewelBankNotEnoughJewels" xml:space="preserve">
+    <value>宝石银行中没有那么多宝石。</value>
+  </data>
+  <data name="JewelBankLimitReached" xml:space="preserve">
+    <value>宝石银行无法再存放更多此种宝石。</value>
+  </data>
+  <data name="JewelBankNoJewelsToDeposit" xml:space="preserve">
+    <value>你没有可存入的宝石。</value>
+  </data>
 </root>

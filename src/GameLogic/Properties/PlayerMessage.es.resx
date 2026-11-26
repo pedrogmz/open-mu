@@ -1240,4 +1240,13 @@ Extensiones de inventario: {18}</value>
   <data name="MobilityTalismanReturnPending" xml:space="preserve">
     <value>Otro Talismán de Movilidad aún tiene pendiente el regreso a la ubicación guardada. Úsalo primero.</value>
   </data>
+  <data name="JewelBankNotEnoughJewels" xml:space="preserve">
+    <value>El banco de joyas no tiene tantas joyas.</value>
+  </data>
+  <data name="JewelBankLimitReached" xml:space="preserve">
+    <value>El banco de joyas no puede guardar más de esta joya.</value>
+  </data>
+  <data name="JewelBankNoJewelsToDeposit" xml:space="preserve">
+    <value>No tienes joyas para depositar.</value>
+  </data>
 </root>

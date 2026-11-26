@@ -9084,5 +9084,41 @@ namespace MUnique.OpenMU.GameLogic.Properties {
 
         /// <summary>Gets the localized TalismanOfMobilityConsumeHandlerPlugIn_Name text.</summary>
         public static string TalismanOfMobilityConsumeHandlerPlugIn_Name => ResourceManager.GetString("TalismanOfMobilityConsumeHandlerPlugIn_Name", resourceCulture)!;
+
+        /// <summary>Gets the localized JewelBankFeaturePlugIn_Name text.</summary>
+        public static string JewelBankFeaturePlugIn_Name => ResourceManager.GetString("JewelBankFeaturePlugIn_Name", resourceCulture)!;
+
+        /// <summary>Gets the localized JewelBankFeaturePlugIn_Description text.</summary>
+        public static string JewelBankFeaturePlugIn_Description => ResourceManager.GetString("JewelBankFeaturePlugIn_Description", resourceCulture)!;
+
+        /// <summary>Gets the localized JewelBankChatCommandPlugIn_Name text.</summary>
+        public static string JewelBankChatCommandPlugIn_Name => ResourceManager.GetString("JewelBankChatCommandPlugIn_Name", resourceCulture)!;
+
+        /// <summary>Gets the localized JewelBankChatCommandPlugIn_Description text.</summary>
+        public static string JewelBankChatCommandPlugIn_Description => ResourceManager.GetString("JewelBankChatCommandPlugIn_Description", resourceCulture)!;
+
+        /// <summary>Gets the localized JewelBankConfiguration_Jewels_Name text.</summary>
+        public static string JewelBankConfiguration_Jewels_Name => ResourceManager.GetString("JewelBankConfiguration_Jewels_Name", resourceCulture)!;
+
+        /// <summary>Gets the localized JewelBankConfiguration_Jewels_Description text.</summary>
+        public static string JewelBankConfiguration_Jewels_Description => ResourceManager.GetString("JewelBankConfiguration_Jewels_Description", resourceCulture)!;
+
+        /// <summary>Gets the localized JewelBankConfiguration_MaximumAmountPerJewel_Name text.</summary>
+        public static string JewelBankConfiguration_MaximumAmountPerJewel_Name => ResourceManager.GetString("JewelBankConfiguration_MaximumAmountPerJewel_Name", resourceCulture)!;
+
+        /// <summary>Gets the localized JewelBankConfiguration_MaximumAmountPerJewel_Description text.</summary>
+        public static string JewelBankConfiguration_MaximumAmountPerJewel_Description => ResourceManager.GetString("JewelBankConfiguration_MaximumAmountPerJewel_Description", resourceCulture)!;
+
+        /// <summary>Gets the localized JewelBankJewel_ItemGroup_Name text.</summary>
+        public static string JewelBankJewel_ItemGroup_Name => ResourceManager.GetString("JewelBankJewel_ItemGroup_Name", resourceCulture)!;
+
+        /// <summary>Gets the localized JewelBankJewel_ItemGroup_Description text.</summary>
+        public static string JewelBankJewel_ItemGroup_Description => ResourceManager.GetString("JewelBankJewel_ItemGroup_Description", resourceCulture)!;
+
+        /// <summary>Gets the localized JewelBankJewel_ItemNumber_Name text.</summary>
+        public static string JewelBankJewel_ItemNumber_Name => ResourceManager.GetString("JewelBankJewel_ItemNumber_Name", resourceCulture)!;
+
+        /// <summary>Gets the localized JewelBankJewel_ItemNumber_Description text.</summary>
+        public static string JewelBankJewel_ItemNumber_Description => ResourceManager.GetString("JewelBankJewel_ItemNumber_Description", resourceCulture)!;
     }
 }

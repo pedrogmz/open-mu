@@ -2133,4 +2133,40 @@
   <data name="TalismanOfMobilityConsumeHandlerPlugIn_Description" xml:space="preserve">
     <value>Plugin, das den Talisman der Mobilität verarbeitet. Die erste Benutzung speichert den Ort des Charakters, die zweite versetzt ihn an den gespeicherten Ort zurück.</value>
   </data>
+  <data name="JewelBankFeaturePlugIn_Name" xml:space="preserve">
+    <value>Juwelenbank</value>
+  </data>
+  <data name="JewelBankFeaturePlugIn_Description" xml:space="preserve">
+    <value>Jeder Account kann Juwelen als Anzahl lagern, sodass sie keinen Platz im Tresor oder im Inventar belegen. Der Open-Source-Client zeigt sie in seinem Juwelenbank-Fenster, das sich mit der Schaltfläche im Inventar oder dem Chatbefehl /banco öffnet.</value>
+  </data>
+  <data name="JewelBankChatCommandPlugIn_Name" xml:space="preserve">
+    <value>Chatbefehl: /banco (Juwelenbank)</value>
+  </data>
+  <data name="JewelBankChatCommandPlugIn_Description" xml:space="preserve">
+    <value>Öffnet das Juwelenbank-Fenster des Open-Source-Clients. Benötigt das Juwelenbank-Feature-Plugin.</value>
+  </data>
+  <data name="JewelBankConfiguration_Jewels_Name" xml:space="preserve">
+    <value>Juwelen</value>
+  </data>
+  <data name="JewelBankConfiguration_Jewels_Description" xml:space="preserve">
+    <value>Die Juwelen, die die Juwelenbank annimmt, nach Gruppe und Nummer des einzelnen Juwels. Ihre Bündel, die die Juwelen-Mixe definieren, werden ebenfalls angenommen.</value>
+  </data>
+  <data name="JewelBankConfiguration_MaximumAmountPerJewel_Name" xml:space="preserve">
+    <value>Höchstanzahl je Juwel</value>
+  </data>
+  <data name="JewelBankConfiguration_MaximumAmountPerJewel_Description" xml:space="preserve">
+    <value>Die höchste Anzahl einzelner Juwelen einer Art, die die Juwelenbank eines Accounts lagert. 0 bedeutet keine Grenze.</value>
+  </data>
+  <data name="JewelBankJewel_ItemGroup_Name" xml:space="preserve">
+    <value>Item-Gruppe</value>
+  </data>
+  <data name="JewelBankJewel_ItemGroup_Description" xml:space="preserve">
+    <value>Die Gruppe der Item-Definition des einzelnen Juwels, z. B. 14 für das Juwel des Segens.</value>
+  </data>
+  <data name="JewelBankJewel_ItemNumber_Name" xml:space="preserve">
+    <value>Item-Nummer</value>
+  </data>
+  <data name="JewelBankJewel_ItemNumber_Description" xml:space="preserve">
+    <value>Die Nummer der Item-Definition des einzelnen Juwels, z. B. 13 für das Juwel des Segens.</value>
+  </data>
 </root>

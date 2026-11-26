@@ -8267,5 +8267,35 @@ namespace MUnique.OpenMU.GameServer.Properties {
                 return ResourceManager.GetString("WhisperedChatMessageHandlerPlugIn_Name", resourceCulture);
             }
         }
+
+        /// <summary>Gets the localized JewelBankViewPlugIn_Name text.</summary>
+        public static string JewelBankViewPlugIn_Name => ResourceManager.GetString("JewelBankViewPlugIn_Name", resourceCulture)!;
+
+        /// <summary>Gets the localized JewelBankViewPlugIn_Description text.</summary>
+        public static string JewelBankViewPlugIn_Description => ResourceManager.GetString("JewelBankViewPlugIn_Description", resourceCulture)!;
+
+        /// <summary>Gets the localized JewelBankStateRequestHandlerPlugIn_Name text.</summary>
+        public static string JewelBankStateRequestHandlerPlugIn_Name => ResourceManager.GetString("JewelBankStateRequestHandlerPlugIn_Name", resourceCulture)!;
+
+        /// <summary>Gets the localized JewelBankStateRequestHandlerPlugIn_Description text.</summary>
+        public static string JewelBankStateRequestHandlerPlugIn_Description => ResourceManager.GetString("JewelBankStateRequestHandlerPlugIn_Description", resourceCulture)!;
+
+        /// <summary>Gets the localized JewelBankDepositRequestHandlerPlugIn_Name text.</summary>
+        public static string JewelBankDepositRequestHandlerPlugIn_Name => ResourceManager.GetString("JewelBankDepositRequestHandlerPlugIn_Name", resourceCulture)!;
+
+        /// <summary>Gets the localized JewelBankDepositRequestHandlerPlugIn_Description text.</summary>
+        public static string JewelBankDepositRequestHandlerPlugIn_Description => ResourceManager.GetString("JewelBankDepositRequestHandlerPlugIn_Description", resourceCulture)!;
+
+        /// <summary>Gets the localized JewelBankWithdrawRequestHandlerPlugIn_Name text.</summary>
+        public static string JewelBankWithdrawRequestHandlerPlugIn_Name => ResourceManager.GetString("JewelBankWithdrawRequestHandlerPlugIn_Name", resourceCulture)!;
+
+        /// <summary>Gets the localized JewelBankWithdrawRequestHandlerPlugIn_Description text.</summary>
+        public static string JewelBankWithdrawRequestHandlerPlugIn_Description => ResourceManager.GetString("JewelBankWithdrawRequestHandlerPlugIn_Description", resourceCulture)!;
+
+        /// <summary>Gets the localized JewelBankDepositAllRequestHandlerPlugIn_Name text.</summary>
+        public static string JewelBankDepositAllRequestHandlerPlugIn_Name => ResourceManager.GetString("JewelBankDepositAllRequestHandlerPlugIn_Name", resourceCulture)!;
+
+        /// <summary>Gets the localized JewelBankDepositAllRequestHandlerPlugIn_Description text.</summary>
+        public static string JewelBankDepositAllRequestHandlerPlugIn_Description => ResourceManager.GetString("JewelBankDepositAllRequestHandlerPlugIn_Description", resourceCulture)!;
     }
 }

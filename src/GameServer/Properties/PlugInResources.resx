@@ -2849,4 +2849,34 @@
   <data name="InventoryItemUseChangedPlugIn_Description" xml:space="preserve">
     <value>The default implementation of the IInventoryItemUseChangedPlugIn which is forwarding everything to the game client with specific data packets.</value>
   </data>
+  <data name="JewelBankViewPlugIn_Name" xml:space="preserve">
+    <value>Jewel bank (open source client)</value>
+  </data>
+  <data name="JewelBankViewPlugIn_Description" xml:space="preserve">
+    <value>Sends the stored jewels of the jewel bank to the open source client.</value>
+  </data>
+  <data name="JewelBankStateRequestHandlerPlugIn_Name" xml:space="preserve">
+    <value>Jewel bank state request handler</value>
+  </data>
+  <data name="JewelBankStateRequestHandlerPlugIn_Description" xml:space="preserve">
+    <value>Answers the request of the open source client for the stored jewels of the jewel bank.</value>
+  </data>
+  <data name="JewelBankDepositRequestHandlerPlugIn_Name" xml:space="preserve">
+    <value>Jewel bank deposit handler</value>
+  </data>
+  <data name="JewelBankDepositRequestHandlerPlugIn_Description" xml:space="preserve">
+    <value>Deposits one kind of jewel from the inventory in the jewel bank.</value>
+  </data>
+  <data name="JewelBankWithdrawRequestHandlerPlugIn_Name" xml:space="preserve">
+    <value>Jewel bank withdraw handler</value>
+  </data>
+  <data name="JewelBankWithdrawRequestHandlerPlugIn_Description" xml:space="preserve">
+    <value>Withdraws an amount of one kind of jewel from the jewel bank into the inventory.</value>
+  </data>
+  <data name="JewelBankDepositAllRequestHandlerPlugIn_Name" xml:space="preserve">
+    <value>Jewel bank deposit all handler</value>
+  </data>
+  <data name="JewelBankDepositAllRequestHandlerPlugIn_Description" xml:space="preserve">
+    <value>Deposits every accepted jewel from the inventory in the jewel bank.</value>
+  </data>
 </root>
