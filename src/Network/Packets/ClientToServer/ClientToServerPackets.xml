@@ -4416,6 +4416,84 @@
         </Field>
       </Fields>
     </Packet>
+    <Packet>
+      <HeaderType>C1HeaderWithSubCode</HeaderType>
+      <Code>F5</Code>
+      <SubCode>0E</SubCode>
+      <Name>JewelBankStateRequest</Name>
+      <Caption>Jewel bank state request</Caption>
+      <Length>4</Length>
+      <Direction>ClientToServer</Direction>
+      <SentWhen>The open source client opens the jewel bank window, e.g. through its button in the inventory.</SentWhen>
+      <CausedReaction>The server sends the JewelBankStateExtended with the stored amount of each jewel which the jewel bank accepts.</CausedReaction>
+    </Packet>
+    <Packet>
+      <HeaderType>C1HeaderWithSubCode</HeaderType>
+      <Code>F5</Code>
+      <SubCode>10</SubCode>
+      <Name>JewelBankDepositRequest</Name>
+      <Caption>Jewel bank deposit request</Caption>
+      <Length>8</Length>
+      <Direction>ClientToServer</Direction>
+      <SentWhen>The player deposits one kind of jewel in the jewel bank window.</SentWhen>
+      <CausedReaction>The server moves every jewel of this kind from the inventory into the jewel bank of the account, the single jewels and their bundles, and answers with the JewelBankStateExtended.</CausedReaction>
+      <Fields>
+        <Field>
+          <Index>4</Index>
+          <Type>Byte</Type>
+          <Name>ItemGroup</Name>
+          <Description>The group of the single jewel's item definition.</Description>
+        </Field>
+        <Field>
+          <Index>6</Index>
+          <Type>ShortLittleEndian</Type>
+          <Name>ItemNumber</Name>
+          <Description>The number of the single jewel's item definition.</Description>
+        </Field>
+      </Fields>
+    </Packet>
+    <Packet>
+      <HeaderType>C1HeaderWithSubCode</HeaderType>
+      <Code>F5</Code>
+      <SubCode>12</SubCode>
+      <Name>JewelBankWithdrawRequest</Name>
+      <Caption>Jewel bank withdraw request</Caption>
+      <Length>12</Length>
+      <Direction>ClientToServer</Direction>
+      <SentWhen>The player withdraws an amount of one kind of jewel in the jewel bank window.</SentWhen>
+      <CausedReaction>The server puts the amount into the inventory, as few items as possible (bundles of the largest size first, then single jewels), when the inventory has the space for them, and answers with the JewelBankStateExtended.</CausedReaction>
+      <Fields>
+        <Field>
+          <Index>4</Index>
+          <Type>Byte</Type>
+          <Name>ItemGroup</Name>
+          <Description>The group of the single jewel's item definition.</Description>
+        </Field>
+        <Field>
+          <Index>6</Index>
+          <Type>ShortLittleEndian</Type>
+          <Name>ItemNumber</Name>
+          <Description>The number of the single jewel's item definition.</Description>
+        </Field>
+        <Field>
+          <Index>8</Index>
+          <Type>IntegerLittleEndian</Type>
+          <Name>Amount</Name>
+          <Description>The number of single jewels to withdraw; a bundle counts as the number of jewels it holds.</Description>
+        </Field>
+      </Fields>
+    </Packet>
+    <Packet>
+      <HeaderType>C1HeaderWithSubCode</HeaderType>
+      <Code>F5</Code>
+      <SubCode>14</SubCode>
+      <Name>JewelBankDepositAllRequest</Name>
+      <Caption>Jewel bank deposit all request</Caption>
+      <Length>4</Length>
+      <Direction>ClientToServer</Direction>
+      <SentWhen>The player deposits all jewels in the jewel bank window.</SentWhen>
+      <CausedReaction>The server moves every jewel which the jewel bank accepts from the inventory into the jewel bank of the account, and answers with the JewelBankStateExtended.</CausedReaction>
+    </Packet>
   <Packet>
       <HeaderType>C1HeaderWithSubCode</HeaderType>
       <Code>F3</Code>

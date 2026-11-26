@@ -5755,6 +5755,118 @@ public static class ConnectionExtensions
     }
 
     /// <summary>
+    /// Sends a <see cref="JewelBankStateRequest" /> to this connection.
+    /// </summary>
+    /// <param name="connection">The connection.</param>
+    /// <remarks>
+    /// Is sent by the client when: The open source client opens the jewel bank window, e.g. through its button in the inventory.
+    /// Causes reaction on server side: The server sends the JewelBankStateExtended with the stored amount of each jewel which the jewel bank accepts.
+    /// </remarks>
+    public static async ValueTask SendJewelBankStateRequestAsync(this IConnection? connection)
+    {
+        if (connection is null)
+        {
+            return;
+        }
+
+        int WritePacket()
+        {
+            var length = JewelBankStateRequestRef.Length;
+            var packet = new JewelBankStateRequestRef(connection.Output.GetSpan(length)[..length]);
+            return packet.Header.Length;
+        }
+
+        await connection.SendAsync(WritePacket).ConfigureAwait(false);
+    }
+
+    /// <summary>
+    /// Sends a <see cref="JewelBankDepositRequest" /> to this connection.
+    /// </summary>
+    /// <param name="connection">The connection.</param>
+    /// <param name="itemGroup">The group of the single jewel's item definition.</param>
+    /// <param name="itemNumber">The number of the single jewel's item definition.</param>
+    /// <remarks>
+    /// Is sent by the client when: The player deposits one kind of jewel in the jewel bank window.
+    /// Causes reaction on server side: The server moves every jewel of this kind from the inventory into the jewel bank of the account, the single jewels and their bundles, and answers with the JewelBankStateExtended.
+    /// </remarks>
+    public static async ValueTask SendJewelBankDepositRequestAsync(this IConnection? connection, byte @itemGroup, ushort @itemNumber)
+    {
+        if (connection is null)
+        {
+            return;
+        }
+
+        int WritePacket()
+        {
+            var length = JewelBankDepositRequestRef.Length;
+            var packet = new JewelBankDepositRequestRef(connection.Output.GetSpan(length)[..length]);
+            packet.ItemGroup = @itemGroup;
+            packet.ItemNumber = @itemNumber;
+
+            return packet.Header.Length;
+        }
+
+        await connection.SendAsync(WritePacket).ConfigureAwait(false);
+    }
+
+    /// <summary>
+    /// Sends a <see cref="JewelBankWithdrawRequest" /> to this connection.
+    /// </summary>
+    /// <param name="connection">The connection.</param>
+    /// <param name="itemGroup">The group of the single jewel's item definition.</param>
+    /// <param name="itemNumber">The number of the single jewel's item definition.</param>
+    /// <param name="amount">The number of single jewels to withdraw; a bundle counts as the number of jewels it holds.</param>
+    /// <remarks>
+    /// Is sent by the client when: The player withdraws an amount of one kind of jewel in the jewel bank window.
+    /// Causes reaction on server side: The server puts the amount into the inventory, as few items as possible (bundles of the largest size first, then single jewels), when the inventory has the space for them, and answers with the JewelBankStateExtended.
+    /// </remarks>
+    public static async ValueTask SendJewelBankWithdrawRequestAsync(this IConnection? connection, byte @itemGroup, ushort @itemNumber, uint @amount)
+    {
+        if (connection is null)
+        {
+            return;
+        }
+
+        int WritePacket()
+        {
+            var length = JewelBankWithdrawRequestRef.Length;
+            var packet = new JewelBankWithdrawRequestRef(connection.Output.GetSpan(length)[..length]);
+            packet.ItemGroup = @itemGroup;
+            packet.ItemNumber = @itemNumber;
+            packet.Amount = @amount;
+
+            return packet.Header.Length;
+        }
+
+        await connection.SendAsync(WritePacket).ConfigureAwait(false);
+    }
+
+    /// <summary>
+    /// Sends a <see cref="JewelBankDepositAllRequest" /> to this connection.
+    /// </summary>
+    /// <param name="connection">The connection.</param>
+    /// <remarks>
+    /// Is sent by the client when: The player deposits all jewels in the jewel bank window.
+    /// Causes reaction on server side: The server moves every jewel which the jewel bank accepts from the inventory into the jewel bank of the account, and answers with the JewelBankStateExtended.
+    /// </remarks>
+    public static async ValueTask SendJewelBankDepositAllRequestAsync(this IConnection? connection)
+    {
+        if (connection is null)
+        {
+            return;
+        }
+
+        int WritePacket()
+        {
+            var length = JewelBankDepositAllRequestRef.Length;
+            var packet = new JewelBankDepositAllRequestRef(connection.Output.GetSpan(length)[..length]);
+            return packet.Header.Length;
+        }
+
+        await connection.SendAsync(WritePacket).ConfigureAwait(false);
+    }
+
+    /// <summary>
     /// Sends a <see cref="CharacterRenameRequest" /> to this connection.
     /// </summary>
     /// <param name="connection">The connection.</param>
