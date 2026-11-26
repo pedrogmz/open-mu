@@ -3360,5 +3360,14 @@ namespace MUnique.OpenMU.GameLogic.Properties {
 
         /// <summary>Gets the localized MobilityTalismanReturnPending text.</summary>
         public static string MobilityTalismanReturnPending => ResourceManager.GetString("MobilityTalismanReturnPending", resourceCulture)!;
+
+        /// <summary>Gets the localized JewelBankNotEnoughJewels text.</summary>
+        public static string JewelBankNotEnoughJewels => ResourceManager.GetString("JewelBankNotEnoughJewels", resourceCulture)!;
+
+        /// <summary>Gets the localized JewelBankLimitReached text.</summary>
+        public static string JewelBankLimitReached => ResourceManager.GetString("JewelBankLimitReached", resourceCulture)!;
+
+        /// <summary>Gets the localized JewelBankNoJewelsToDeposit text.</summary>
+        public static string JewelBankNoJewelsToDeposit => ResourceManager.GetString("JewelBankNoJewelsToDeposit", resourceCulture)!;
     }
 }

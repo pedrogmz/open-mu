@@ -1921,4 +1921,40 @@
   <data name="InventoryUsedItemIdentifier_ExclusiveGroup_Description" xml:space="preserve">
     <value>同一互斥组中同时只能使用一个物品，例如鹰雕像或山羊雕像。为 0 时，只排除同一定义的其他物品。</value>
   </data>
+  <data name="JewelBankFeaturePlugIn_Name" xml:space="preserve">
+    <value>宝石银行</value>
+  </data>
+  <data name="JewelBankFeaturePlugIn_Description" xml:space="preserve">
+    <value>每个账号都可以按数量存放宝石，因此宝石不占用仓库或背包的空间。开源客户端在其宝石银行窗口中显示，可通过背包中的按钮或聊天命令 /banco 打开。</value>
+  </data>
+  <data name="JewelBankChatCommandPlugIn_Name" xml:space="preserve">
+    <value>聊天命令：/banco（宝石银行）</value>
+  </data>
+  <data name="JewelBankChatCommandPlugIn_Description" xml:space="preserve">
+    <value>打开开源客户端的宝石银行窗口。需要宝石银行功能插件。</value>
+  </data>
+  <data name="JewelBankConfiguration_Jewels_Name" xml:space="preserve">
+    <value>宝石</value>
+  </data>
+  <data name="JewelBankConfiguration_Jewels_Description" xml:space="preserve">
+    <value>宝石银行接受的宝石，按单个宝石的组和编号指定。宝石合成所定义的其捆绑包也被接受。</value>
+  </data>
+  <data name="JewelBankConfiguration_MaximumAmountPerJewel_Name" xml:space="preserve">
+    <value>每种宝石的最大数量</value>
+  </data>
+  <data name="JewelBankConfiguration_MaximumAmountPerJewel_Description" xml:space="preserve">
+    <value>一个账号的宝石银行中每种单个宝石的最大存放数量。0 表示不限。</value>
+  </data>
+  <data name="JewelBankJewel_ItemGroup_Name" xml:space="preserve">
+    <value>物品组</value>
+  </data>
+  <data name="JewelBankJewel_ItemGroup_Description" xml:space="preserve">
+    <value>单个宝石物品定义的组，例如祝福宝石为 14。</value>
+  </data>
+  <data name="JewelBankJewel_ItemNumber_Name" xml:space="preserve">
+    <value>物品编号</value>
+  </data>
+  <data name="JewelBankJewel_ItemNumber_Description" xml:space="preserve">
+    <value>单个宝石物品定义的编号，例如祝福宝石为 13。</value>
+  </data>
 </root>

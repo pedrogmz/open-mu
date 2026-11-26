@@ -7301,6 +7301,24 @@ public class PacketStructureTests
     }
 
     /// <summary>
+    /// Tests the packet size calculation for JewelBankStateExtended.
+    /// </summary>
+    [Test]
+    public void JewelBankStateExtended_PacketSizeValidation()
+    {
+        // Basic packet validation
+        // Validate header type and field boundaries
+        
+        // Field 'OpenWindow' starts at index 5 with size 1
+        Assert.That(5, Is.GreaterThanOrEqualTo(0), 
+            "Field 'OpenWindow' has invalid negative index");
+        
+        // Field 'Count' starts at index 6 with size 1
+        Assert.That(6, Is.GreaterThanOrEqualTo(0), 
+            "Field 'Count' has invalid negative index");
+    }
+
+    /// <summary>
     /// Tests the packet size calculation for ExternalChatMessage.
     /// </summary>
     [Test]

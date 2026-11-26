@@ -3780,4 +3780,31 @@
   <data name="LordsMixLimitPeriod_SiegeCycle_Caption" xml:space="preserve">
     <value>Belagerungszyklus</value>
   </data>
+  <data name="Account_JewelBank_Caption" xml:space="preserve">
+    <value>Juwelenbank</value>
+  </data>
+  <data name="Account_JewelBank_Description" xml:space="preserve">
+    <value>Die Juwelen, die in der Juwelenbank gelagert sind, gemeinsam für alle Charaktere des Accounts. Juwelen werden als Anzahl gelagert und belegen daher keinen Platz im Tresor oder im Inventar.</value>
+  </data>
+  <data name="JewelBankEntry_TypeCaption" xml:space="preserve">
+    <value>Juwelenbank-Eintrag</value>
+  </data>
+  <data name="JewelBankEntry_TypeCaptionPlural" xml:space="preserve">
+    <value>Juwelenbank-Einträge</value>
+  </data>
+  <data name="JewelBankEntry_TypeDescription" xml:space="preserve">
+    <value>Die gelagerte Anzahl einer Juwelenart in der Juwelenbank eines Accounts.</value>
+  </data>
+  <data name="JewelBankEntry_Jewel_Caption" xml:space="preserve">
+    <value>Juwel</value>
+  </data>
+  <data name="JewelBankEntry_Jewel_Description" xml:space="preserve">
+    <value>Die Definition des einzelnen Juwels. Bündel davon werden als die Anzahl einzelner Juwelen gelagert, die sie enthalten.</value>
+  </data>
+  <data name="JewelBankEntry_Amount_Caption" xml:space="preserve">
+    <value>Anzahl</value>
+  </data>
+  <data name="JewelBankEntry_Amount_Description" xml:space="preserve">
+    <value>Die gelagerte Anzahl einzelner Juwelen.</value>
+  </data>
 </root>

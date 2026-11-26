@@ -1240,4 +1240,13 @@ Extensões de inventário: {18}</value>
   <data name="LordsMixLimitReached" xml:space="preserve">
     <value>O limite do Lord's Mix foi atingido; ele pode ser usado novamente no próximo período.</value>
   </data>
+  <data name="JewelBankNotEnoughJewels" xml:space="preserve">
+    <value>O banco de joias não tem tantas joias.</value>
+  </data>
+  <data name="JewelBankLimitReached" xml:space="preserve">
+    <value>O banco de joias não pode guardar mais desta joia.</value>
+  </data>
+  <data name="JewelBankNoJewelsToDeposit" xml:space="preserve">
+    <value>Você não tem joias para depositar.</value>
+  </data>
 </root>

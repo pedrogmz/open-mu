@@ -2586,4 +2586,34 @@
   <data name="InventoryItemUseChangedPlugIn_Description" xml:space="preserve">
     <value>IInventoryItemUseChangedPlugIn的默认实现，通过特定数据包将所有内容转发给游戏客户端。</value>
   </data>
+  <data name="JewelBankViewPlugIn_Name" xml:space="preserve">
+    <value>宝石银行（开源客户端）</value>
+  </data>
+  <data name="JewelBankViewPlugIn_Description" xml:space="preserve">
+    <value>将宝石银行中存放的宝石发送给开源客户端。</value>
+  </data>
+  <data name="JewelBankStateRequestHandlerPlugIn_Name" xml:space="preserve">
+    <value>宝石银行状态请求处理器</value>
+  </data>
+  <data name="JewelBankStateRequestHandlerPlugIn_Description" xml:space="preserve">
+    <value>回应开源客户端对宝石银行存放宝石的请求。</value>
+  </data>
+  <data name="JewelBankDepositRequestHandlerPlugIn_Name" xml:space="preserve">
+    <value>宝石银行存入处理器</value>
+  </data>
+  <data name="JewelBankDepositRequestHandlerPlugIn_Description" xml:space="preserve">
+    <value>将背包中的一种宝石存入宝石银行。</value>
+  </data>
+  <data name="JewelBankWithdrawRequestHandlerPlugIn_Name" xml:space="preserve">
+    <value>宝石银行取出处理器</value>
+  </data>
+  <data name="JewelBankWithdrawRequestHandlerPlugIn_Description" xml:space="preserve">
+    <value>从宝石银行取出一定数量的某种宝石放入背包。</value>
+  </data>
+  <data name="JewelBankDepositAllRequestHandlerPlugIn_Name" xml:space="preserve">
+    <value>宝石银行全部存入处理器</value>
+  </data>
+  <data name="JewelBankDepositAllRequestHandlerPlugIn_Description" xml:space="preserve">
+    <value>将背包中所有被接受的宝石存入宝石银行。</value>
+  </data>
 </root>

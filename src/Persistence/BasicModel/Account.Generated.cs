@@ -47,6 +47,27 @@ public partial class Account : MUnique.OpenMU.DataModel.Entities.Account, IIdent
     }
 
     /// <summary>
+    /// Gets the raw collection of <see cref="JewelBank" />.
+    /// </summary>
+    [System.Text.Json.Serialization.JsonPropertyName("jewelBank")]
+    public ICollection<JewelBankEntry> RawJewelBank { get; } = new List<JewelBankEntry>();
+    
+    /// <inheritdoc/>
+    [System.Text.Json.Serialization.JsonIgnore]
+    public override ICollection<MUnique.OpenMU.DataModel.Entities.JewelBankEntry> JewelBank
+    {
+        get => base.JewelBank ??= new CollectionAdapter<MUnique.OpenMU.DataModel.Entities.JewelBankEntry, JewelBankEntry>(this.RawJewelBank);
+        protected set
+        {
+            this.JewelBank.Clear();
+            foreach (var item in value)
+            {
+                this.JewelBank.Add(item);
+            }
+        }
+    }
+
+    /// <summary>
     /// Gets the raw collection of <see cref="Characters" />.
     /// </summary>
     [System.Text.Json.Serialization.JsonPropertyName("characters")]

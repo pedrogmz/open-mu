@@ -122,6 +122,7 @@ internal sealed class BasicModelConverter
             ItemStatProfile value => this.Convert(value),
             ItemStatTerms value => this.Convert(value),
             ItemStorage value => this.Convert(value),
+            JewelBankEntry value => this.Convert(value),
             JewelMix value => this.Convert(value),
             LetterBody value => this.Convert(value),
             LetterHeader value => this.Convert(value),
@@ -195,6 +196,14 @@ internal sealed class BasicModelConverter
         target.VaultPassword = source.VaultPassword;
         target.Vault = (MUnique.OpenMU.DataModel.Entities.ItemStorage)this.ConvertObject(source.Vault)!;
         target.IsVaultExtended = source.IsVaultExtended;
+        if (source.JewelBank is { } jewelBankItems)
+        {
+            foreach (var item in jewelBankItems)
+            {
+                target.JewelBank.Add((MUnique.OpenMU.DataModel.Entities.JewelBankEntry)this.ConvertObject(item)!);
+            }
+        }
+
         target.WCoinC = source.WCoinC;
         target.WCoinP = source.WCoinP;
         target.GoblinPoints = source.GoblinPoints;
@@ -2448,6 +2457,21 @@ internal sealed class BasicModelConverter
         }
 
         target.Money = source.Money;
+        return target;
+    }
+
+    private BasicModel.JewelBankEntry Convert(JewelBankEntry source)
+    {
+        if (this._converted.TryGetValue(source, out var converted))
+        {
+            return (BasicModel.JewelBankEntry)converted;
+        }
+
+        var target = new BasicModel.JewelBankEntry();
+        this._converted.Add(source, target);
+        target.Id = source.Id;
+        target.Jewel = (MUnique.OpenMU.DataModel.Configuration.Items.ItemDefinition)this.ConvertObject(source.Jewel)!;
+        target.Amount = source.Amount;
         return target;
     }
 

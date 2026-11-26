@@ -2739,4 +2739,34 @@
   <data name="InventoryItemUseChangedPlugIn_Description" xml:space="preserve">
     <value>Die Standardimplementierung von IInventoryItemUseChangedPlugIn, die alles mit spezifischen Datenpaketen an den Spielclient weiterleitet.</value>
   </data>
+  <data name="JewelBankViewPlugIn_Name" xml:space="preserve">
+    <value>Juwelenbank (Open-Source-Client)</value>
+  </data>
+  <data name="JewelBankViewPlugIn_Description" xml:space="preserve">
+    <value>Sendet die gelagerten Juwelen der Juwelenbank an den Open-Source-Client.</value>
+  </data>
+  <data name="JewelBankStateRequestHandlerPlugIn_Name" xml:space="preserve">
+    <value>Handler für die Juwelenbank-Abfrage</value>
+  </data>
+  <data name="JewelBankStateRequestHandlerPlugIn_Description" xml:space="preserve">
+    <value>Beantwortet die Abfrage des Open-Source-Clients nach den gelagerten Juwelen der Juwelenbank.</value>
+  </data>
+  <data name="JewelBankDepositRequestHandlerPlugIn_Name" xml:space="preserve">
+    <value>Handler für Juwelenbank-Einzahlungen</value>
+  </data>
+  <data name="JewelBankDepositRequestHandlerPlugIn_Description" xml:space="preserve">
+    <value>Lagert eine Juwelenart aus dem Inventar in die Juwelenbank ein.</value>
+  </data>
+  <data name="JewelBankWithdrawRequestHandlerPlugIn_Name" xml:space="preserve">
+    <value>Handler für Juwelenbank-Auszahlungen</value>
+  </data>
+  <data name="JewelBankWithdrawRequestHandlerPlugIn_Description" xml:space="preserve">
+    <value>Entnimmt eine Anzahl einer Juwelenart aus der Juwelenbank in das Inventar.</value>
+  </data>
+  <data name="JewelBankDepositAllRequestHandlerPlugIn_Name" xml:space="preserve">
+    <value>Handler für Juwelenbank-Einzahlung aller Juwelen</value>
+  </data>
+  <data name="JewelBankDepositAllRequestHandlerPlugIn_Description" xml:space="preserve">
+    <value>Lagert jedes angenommene Juwel aus dem Inventar in die Juwelenbank ein.</value>
+  </data>
 </root>

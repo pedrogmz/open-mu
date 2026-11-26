@@ -12,7 +12,7 @@ namespace MUnique.OpenMU.Persistence.EntityFramework.CompiledModels.ForEntityDat
     public partial class EntityDataContextModel
     {
         private EntityDataContextModel()
-            : base(skipDetectChanges: false, modelId: new Guid("1c226610-1dd5-4b06-85e5-ff805963d549"), entityTypeCount: 133)
+            : base(skipDetectChanges: false, modelId: new Guid("3206b78a-e3a0-44d5-b227-f2728c352508"), entityTypeCount: 134)
         {
         }
 
@@ -110,6 +110,7 @@ namespace MUnique.OpenMU.Persistence.EntityFramework.CompiledModels.ForEntityDat
             var itemStatProfile = ItemStatProfileEntityType.Create(this);
             var itemStatTerms = ItemStatTermsEntityType.Create(this);
             var itemStorage = ItemStorageEntityType.Create(this);
+            var jewelBankEntry = JewelBankEntryEntityType.Create(this);
             var jewelMix = JewelMixEntityType.Create(this);
             var letterBody = LetterBodyEntityType.Create(this);
             var letterHeader = LetterHeaderEntityType.Create(this);
@@ -331,6 +332,8 @@ namespace MUnique.OpenMU.Persistence.EntityFramework.CompiledModels.ForEntityDat
             ItemStatTermsEntityType.CreateForeignKey1(itemStatTerms, attributeDefinition);
             ItemStatTermsEntityType.CreateForeignKey2(itemStatTerms, itemStatProfile);
             ItemStatTermsEntityType.CreateForeignKey3(itemStatTerms, itemLevelBonusTable);
+            JewelBankEntryEntityType.CreateForeignKey1(jewelBankEntry, account);
+            JewelBankEntryEntityType.CreateForeignKey2(jewelBankEntry, itemDefinition);
             JewelMixEntityType.CreateForeignKey1(jewelMix, gameConfiguration);
             JewelMixEntityType.CreateForeignKey2(jewelMix, itemDefinition);
             JewelMixEntityType.CreateForeignKey3(jewelMix, itemDefinition);
@@ -511,6 +514,7 @@ namespace MUnique.OpenMU.Persistence.EntityFramework.CompiledModels.ForEntityDat
             ItemStatProfileEntityType.CreateAnnotations(itemStatProfile);
             ItemStatTermsEntityType.CreateAnnotations(itemStatTerms);
             ItemStorageEntityType.CreateAnnotations(itemStorage);
+            JewelBankEntryEntityType.CreateAnnotations(jewelBankEntry);
             JewelMixEntityType.CreateAnnotations(jewelMix);
             LetterBodyEntityType.CreateAnnotations(letterBody);
             LetterHeaderEntityType.CreateAnnotations(letterHeader);

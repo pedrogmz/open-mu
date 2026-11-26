@@ -135,6 +135,13 @@ public class Account
     public bool IsVaultExtended { get; set; }
 
     /// <summary>
+    /// Gets or sets the jewels which are stored in the jewel bank, shared by all characters of the account.
+    /// </summary>
+    [MemberOfAggregate]
+    [HiddenAtCreation]
+    public virtual ICollection<JewelBankEntry> JewelBank { get; protected set; } = null!;
+
+    /// <summary>
     /// Gets or sets the available WCoin (C) of the cash shop.
     /// </summary>
     /// <remarks>

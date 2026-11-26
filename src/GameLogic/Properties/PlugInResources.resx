@@ -2327,4 +2327,40 @@
   <data name="TalismanOfMobilityConsumeHandlerPlugIn_Description" xml:space="preserve">
     <value>Plugin which handles the Talisman of Mobility. The first usage saves the place of the character, the second one warps it back to the saved place.</value>
   </data>
+  <data name="JewelBankFeaturePlugIn_Name" xml:space="preserve">
+    <value>Jewel bank</value>
+  </data>
+  <data name="JewelBankFeaturePlugIn_Description" xml:space="preserve">
+    <value>Every account can store jewels by their number, so they take no space in the vault or the inventory. The open source client shows it in its jewel bank window, which opens with the button in the inventory or the chat command /banco.</value>
+  </data>
+  <data name="JewelBankChatCommandPlugIn_Name" xml:space="preserve">
+    <value>Chat command: /banco (jewel bank)</value>
+  </data>
+  <data name="JewelBankChatCommandPlugIn_Description" xml:space="preserve">
+    <value>Opens the jewel bank window of the open source client. Needs the jewel bank feature plugin.</value>
+  </data>
+  <data name="JewelBankConfiguration_Jewels_Name" xml:space="preserve">
+    <value>Jewels</value>
+  </data>
+  <data name="JewelBankConfiguration_Jewels_Description" xml:space="preserve">
+    <value>The jewels which the jewel bank accepts, by the group and number of the single jewel. Their bundles, which the jewel mixes define, are accepted too.</value>
+  </data>
+  <data name="JewelBankConfiguration_MaximumAmountPerJewel_Name" xml:space="preserve">
+    <value>Maximum amount per jewel</value>
+  </data>
+  <data name="JewelBankConfiguration_MaximumAmountPerJewel_Description" xml:space="preserve">
+    <value>The most single jewels of one kind which the jewel bank of an account stores. 0 means no limit.</value>
+  </data>
+  <data name="JewelBankJewel_ItemGroup_Name" xml:space="preserve">
+    <value>Item group</value>
+  </data>
+  <data name="JewelBankJewel_ItemGroup_Description" xml:space="preserve">
+    <value>The group of the single jewel's item definition, e.g. 14 for the Jewel of Bless.</value>
+  </data>
+  <data name="JewelBankJewel_ItemNumber_Name" xml:space="preserve">
+    <value>Item number</value>
+  </data>
+  <data name="JewelBankJewel_ItemNumber_Description" xml:space="preserve">
+    <value>The number of the single jewel's item definition, e.g. 13 for the Jewel of Bless.</value>
+  </data>
 </root>

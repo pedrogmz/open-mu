@@ -71,6 +71,7 @@ const sidebars = {
         "server-features/player-shop-currencies",
         "server-features/lucky-coins",
         "server-features/waiting-items",
+        "server-features/jewel-bank",
       ],
     },
     {
