@@ -569,4 +569,10 @@
   <data name="DevilSquareRewardTiersUpdatePlugIn_Description" xml:space="preserve">
     <value>按档次配置恶魔广场的奖励，使每位排名玩家都能获得奖励，而不仅是第 1 到 4 名：六名及以下玩家按名次，更多玩家按名次百分比。第 1 到 4 名的奖励数量保留为第 1 到 4 档的数量。</value>
   </data>
+  <data name="AddEgyptMapUpdatePlugIn_Name" xml:space="preserve">
+    <value>添加埃及地图</value>
+  </data>
+  <data name="AddEgyptMapUpdatePlugIn_Description" xml:space="preserve">
+    <value>添加自定义地图埃及（编号82）、其出生点和传送列表条目，并让所有游戏服务器承载该地图。</value>
+  </data>
 </root>
