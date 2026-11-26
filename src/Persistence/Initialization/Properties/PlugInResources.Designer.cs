@@ -1303,7 +1303,7 @@ namespace MUnique.OpenMU.Persistence.Initialization.Properties {
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to This update adds the custom map Egypt (number 82), its spawn gate and its warp list entry..
+        ///   Looks up a localized string similar to This update adds the custom map Egypt (number 82), its spawn gate and its warp list entry, and lets every game server host it..
         /// </summary>
         public static string AddEgyptMapUpdatePlugIn_Description {
             get {

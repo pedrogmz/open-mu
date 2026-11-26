@@ -12,7 +12,8 @@ using MUnique.OpenMU.Persistence.Initialization.VersionSeasonSix.Maps;
 using MUnique.OpenMU.PlugIns;
 
 /// <summary>
-/// This update adds the custom map Egypt (number 82) with its spawn gate and its warp list entry.
+/// This update adds the custom map Egypt (number 82) with its spawn gate and its warp list entry,
+/// and lets every game server configuration host it.
 /// </summary>
 [PlugIn]
 [Display(Name = nameof(PlugInResources.AddEgyptMapUpdatePlugIn_Name), Description = nameof(PlugInResources.AddEgyptMapUpdatePlugIn_Description), ResourceType = typeof(PlugInResources))]
@@ -27,7 +28,7 @@ public class AddEgyptMapUpdatePlugIn : UpdatePlugInBase
     /// <summary>
     /// The plug in description.
     /// </summary>
-    internal const string PlugInDescription = "This update adds the custom map Egypt (number 82), its spawn gate and its warp list entry.";
+    internal const string PlugInDescription = "This update adds the custom map Egypt (number 82), its spawn gate and its warp list entry, and lets every game server host it.";
 
     /// <inheritdoc />
     public override string DataInitializationKey => VersionSeasonSix.DataInitialization.Id;
@@ -45,7 +46,14 @@ public class AddEgyptMapUpdatePlugIn : UpdatePlugInBase
     public override DateTime CreatedAt => new(2026, 11, 26, 12, 0, 0, DateTimeKind.Utc);
 
     /// <inheritdoc />
-    protected override ValueTask ApplyAsync(IContext context, GameConfiguration gameConfiguration)
+    /// <remarks>Version 2 adds the map to the game server configurations, without which no server hosts it.</remarks>
+    public override int Version => 2;
+
+    /// <inheritdoc />
+    public override DateTime UpdatedAt => new(2026, 11, 26, 14, 0, 0, DateTimeKind.Utc);
+
+    /// <inheritdoc />
+    protected override async ValueTask ApplyAsync(IContext context, GameConfiguration gameConfiguration)
     {
         var map = gameConfiguration.Maps.FirstOrDefault(m => m.Number == Egypt.Number && m.Discriminator == 0);
         if (map is null)
@@ -68,6 +76,12 @@ public class AddEgyptMapUpdatePlugIn : UpdatePlugInBase
             gameConfiguration.WarpList.Add(warpInfo);
         }
 
-        return ValueTask.CompletedTask;
+        foreach (var serverConfiguration in await context.GetAsync<GameServerConfiguration>().ConfigureAwait(false))
+        {
+            if (!serverConfiguration.Maps.Contains(map))
+            {
+                serverConfiguration.Maps.Add(map);
+            }
+        }
     }
 }

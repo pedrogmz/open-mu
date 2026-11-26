@@ -499,7 +499,7 @@
   <data name="AddSocketCountTablesUpdatePlugIn_Name" xml:space="preserve"><value>Socket count tables</value></data>
   <data name="AddSocketCountTablesUpdatePlugIn_Description" xml:space="preserve"><value>Socket items drop with one socket most of the time and with three (five for two-handed weapons) rarely, instead of with any number up to the maximum at the same chance. Raises the maximum sockets of the socket items to five; the tables restrict the drops. Socket items which already have a socket count table keep it.</value></data>
   <data name="AddEgyptMapUpdatePlugIn_Name" xml:space="preserve"><value>Add Egypt map</value></data>
-  <data name="AddEgyptMapUpdatePlugIn_Description" xml:space="preserve"><value>This update adds the custom map Egypt (number 82), its spawn gate and its warp list entry.</value></data>
+  <data name="AddEgyptMapUpdatePlugIn_Description" xml:space="preserve"><value>This update adds the custom map Egypt (number 82), its spawn gate and its warp list entry, and lets every game server host it.</value></data>
   <data name="AddFigurinesAndCharmsUpdatePlugIn_Name" xml:space="preserve">
     <value>Add the figurines and charms</value>
   </data>
