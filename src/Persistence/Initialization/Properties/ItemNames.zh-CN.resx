@@ -2073,6 +2073,30 @@
   <data name="WingsOfLife" xml:space="preserve">
     <value>生命之翼</value>
   </data>
+  <data name="WingsOfElysium" xml:space="preserve">
+    <value>极乐之翼</value>
+  </data>
+  <data name="WingsOfFlameGod" xml:space="preserve">
+    <value>炎神之翼</value>
+  </data>
+  <data name="WingOfCelestialBody" xml:space="preserve">
+    <value>天体之翼</value>
+  </data>
+  <data name="WingsOfAnnihilation" xml:space="preserve">
+    <value>毁灭之翼</value>
+  </data>
+  <data name="CloakOfDominator" xml:space="preserve">
+    <value>统治者披风</value>
+  </data>
+  <data name="WingsOfOtherWorld" xml:space="preserve">
+    <value>异界之翼</value>
+  </data>
+  <data name="CloakOfJudgment" xml:space="preserve">
+    <value>审判披风</value>
+  </data>
+  <data name="CloakOfIsolation" xml:space="preserve">
+    <value>孤立披风</value>
+  </data>
   <data name="MagicBackpack" xml:space="preserve">
     <value>魔法背包</value>
   </data>

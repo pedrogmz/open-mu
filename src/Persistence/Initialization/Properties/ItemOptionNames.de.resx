@@ -168,6 +168,30 @@
   <data name="WingsOfLifeOptions" xml:space="preserve">
     <value>Optionen der Flügel des Lebens</value>
   </data>
+  <data name="WingsOfElysiumOptions" xml:space="preserve">
+    <value>Optionen: Flügel von Elysium</value>
+  </data>
+  <data name="WingsOfFlameGodOptions" xml:space="preserve">
+    <value>Optionen: Flügel des Flammengottes</value>
+  </data>
+  <data name="WingOfCelestialBodyOptions" xml:space="preserve">
+    <value>Optionen: Flügel des Himmelskörpers</value>
+  </data>
+  <data name="WingsOfAnnihilationOptions" xml:space="preserve">
+    <value>Optionen: Flügel der Vernichtung</value>
+  </data>
+  <data name="CloakOfDominatorOptions" xml:space="preserve">
+    <value>Optionen: Umhang des Beherrschers</value>
+  </data>
+  <data name="WingsOfOtherWorldOptions" xml:space="preserve">
+    <value>Optionen: Flügel der Anderswelt</value>
+  </data>
+  <data name="CloakOfJudgmentOptions" xml:space="preserve">
+    <value>Optionen: Umhang des Gerichts</value>
+  </data>
+  <data name="CloakOfIsolationOptions" xml:space="preserve">
+    <value>Optionen: Umhang der Isolation</value>
+  </data>
   <data name="CompleteSetBonusLevel10" xml:space="preserve">
     <value>Bonus für vollständiges Set (Level 10)</value>
   </data>

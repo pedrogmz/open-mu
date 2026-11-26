@@ -87,6 +87,30 @@
   <data name="WingsOfLifeOptions" xml:space="preserve">
     <value>Wings of Life Options</value>
   </data>
+  <data name="WingsOfElysiumOptions" xml:space="preserve">
+    <value>Wings of Elysium Options</value>
+  </data>
+  <data name="WingsOfFlameGodOptions" xml:space="preserve">
+    <value>Wings of Flame God Options</value>
+  </data>
+  <data name="WingOfCelestialBodyOptions" xml:space="preserve">
+    <value>Wing of Celestial Body Options</value>
+  </data>
+  <data name="WingsOfAnnihilationOptions" xml:space="preserve">
+    <value>Wings of Annihilation Options</value>
+  </data>
+  <data name="CloakOfDominatorOptions" xml:space="preserve">
+    <value>Cloak of Dominator Options</value>
+  </data>
+  <data name="WingsOfOtherWorldOptions" xml:space="preserve">
+    <value>Wings of Other World Options</value>
+  </data>
+  <data name="CloakOfJudgmentOptions" xml:space="preserve">
+    <value>Cloak of Judgment Options</value>
+  </data>
+  <data name="CloakOfIsolationOptions" xml:space="preserve">
+    <value>Cloak of Isolation Options</value>
+  </data>
   <data name="CetoAncientSet" xml:space="preserve">
     <value>Ceto (Ancient Set)</value>
   </data>

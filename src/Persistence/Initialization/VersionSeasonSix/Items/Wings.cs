@@ -18,6 +18,16 @@ using MUnique.OpenMU.Persistence.Initialization.Properties;
 /// </summary>
 public class Wings : WingsInitializerBase
 {
+    /// <summary>
+    /// The initial damage increase of the fourth wings, in percent.
+    /// </summary>
+    internal const int FourthWingDamageIncrease = 49;
+
+    /// <summary>
+    /// The initial damage absorption of the fourth wings, in percent.
+    /// </summary>
+    internal const int FourthWingDamageAbsorb = 43;
+
     private ItemLevelBonusTable? _absorbByLevelTable;
     private ItemLevelBonusTable? _defenseBonusByLevelTable;
     private ItemLevelBonusTable? _damageIncreaseByLevelTable;
@@ -106,6 +116,9 @@ public class Wings : WingsInitializerBase
         this.CreateWing(40, 2, 3, LocalizedString.FromResource(() => ItemNames.CapeOfEmperor), 150, 45, 220, 400, CharacterClasses.LordEmperor, this.BuildOptions((0b00, OptionType.HealthRecover), (0b11, OptionType.PhysDamage), (0b10, OptionType.Defense)), 39, 24, this._damageIncreaseByLevelTable, thirdWingOptions);
         this.CreateWing(43, 4, 3, LocalizedString.FromResource(() => ItemNames.WingOfDimension), 150, 45, 220, 400, CharacterClasses.DimensionMaster, this.BuildOptions((0b00, OptionType.HealthRecover), (0b11, OptionType.WizDamage), (0b10, OptionType.CurseDamage)), 39, 39, this._damageIncreaseByLevelTable, thirdWingOptions);
         this.CreateWing(50, 2, 3, LocalizedString.FromResource(() => ItemNames.CapeOfOverrule), 150, 45, 220, 400, CharacterClasses.FistMaster, this.BuildOptions((0b00, OptionType.HealthRecover), (0b11, OptionType.PhysDamage), (0b10, OptionType.Defense)), 39, 39, this._damageIncreaseByLevelTable, thirdWingOptions);
+
+        // Fourth wings of season 13:
+        this.CreateFourthWings(thirdWingOptions);
     }
 
     /// <summary>
@@ -144,6 +157,28 @@ public class Wings : WingsInitializerBase
         var secondWingOptions = this.GameConfiguration.ItemOptions.FirstOrDefault(option => option.GetId() == secondWingOptionsId)
                                 ?? this.CreateSecondClassWingOptions();
         return this.CreateMonsterWings(secondWingOptions);
+    }
+
+    /// <summary>
+    /// Adds the fourth wings of season 13 (Wings of Elysium, Wings of Flame God, Wing of Celestial Body, Wings of Annihilation,
+    /// Cloak of Dominator, Wings of Other World, Cloak of Judgment and Cloak of Isolation) to an existing configuration,
+    /// which was created before they were part of it.
+    /// </summary>
+    /// <remarks>
+    /// The fourth wings use the same item level bonus tables and excellent options as the third wings, so the existing ones
+    /// of the Wing of Storm are used. Only when they can't be found, new ones are created.
+    /// </remarks>
+    /// <returns>The created items. Fourth wings which already exist are not created again.</returns>
+    internal IReadOnlyList<ItemDefinition> AddFourthWings()
+    {
+        var wingOfStorm = this.GameConfiguration.Items.FirstOrDefault(item => item is { Group: 12, Number: 36 });
+        this._absorbByLevelTable = GetBonusTable(wingOfStorm, Stats.DamageReceiveDecrement) ?? this.CreateAbsorbBonusPerLevel();
+        this._damageIncreaseByLevelTable = GetBonusTable(wingOfStorm, Stats.AttackDamageIncrease) ?? this.CreateDamageIncreaseBonusPerLevelFirstAndThirdWings();
+        this._defenseBonusByLevelTableThird = GetBonusTable(wingOfStorm, Stats.DefenseBase) ?? this.CreateBonusDefensePerLevelThirdWings();
+        var thirdWingOptionsId = GuidHelper.CreateGuid<ItemOptionDefinition>(ItemOptionDefinitionNumbers.Wing3rd);
+        var thirdWingOptions = this.GameConfiguration.ItemOptions.FirstOrDefault(option => option.GetId() == thirdWingOptionsId)
+                               ?? this.CreateThirdClassWingOptions();
+        return this.CreateFourthWings(thirdWingOptions);
     }
 
     private static ItemLevelBonusTable? GetBonusTable(ItemDefinition? item, AttributeDefinition targetAttribute)
@@ -207,6 +242,44 @@ public class Wings : WingsInitializerBase
         }
 
         return this.CreateWing(number, width, height, name, 150, defense, 210, 290, characterClasses, possibleOptions, 32, 25, this._damageIncreaseByLevelTableSecond!, secondWingOptions);
+    }
+
+    /// <summary>
+    /// Creates the fourth wings of season 13.
+    /// </summary>
+    /// <remarks>
+    /// Size, defense, drop level and durability are the ones of the season 20 client's item data. As this server has no
+    /// fourth classes and no level 800, they need level 400 and the third class, like the third wings, whose excellent
+    /// options, additional options and growth per level they share. The Cloak of Isolation belongs to the Grow Lancer,
+    /// which doesn't exist here, so it's a second cloak of the Fist Master.
+    /// </remarks>
+    /// <param name="thirdWingOptions">The excellent options of the third wings.</param>
+    /// <returns>The created items. Fourth wings which already exist are not created again.</returns>
+    private IReadOnlyList<ItemDefinition> CreateFourthWings(ItemOptionDefinition thirdWingOptions)
+    {
+        var created = new List<ItemDefinition?>
+        {
+            this.CreateFourthWing(414, 4, LocalizedString.FromResource(() => ItemNames.WingsOfElysium), 155, CharacterClasses.GrandMaster, this.BuildOptions((0b00, OptionType.HealthRecover), (0b11, OptionType.WizDamage), (0b10, OptionType.Defense)), thirdWingOptions),
+            this.CreateFourthWing(415, 4, LocalizedString.FromResource(() => ItemNames.WingsOfFlameGod), 170, CharacterClasses.BladeMaster, this.BuildOptions((0b00, OptionType.HealthRecover), (0b11, OptionType.PhysDamage), (0b10, OptionType.Defense)), thirdWingOptions, MovementSpeedConstants.FastWingMovementSpeed),
+            this.CreateFourthWing(416, 4, LocalizedString.FromResource(() => ItemNames.WingOfCelestialBody), 170, CharacterClasses.HighElf, this.BuildOptions((0b00, OptionType.HealthRecover), (0b11, OptionType.PhysDamage), (0b10, OptionType.Defense)), thirdWingOptions),
+            this.CreateFourthWing(417, 4, LocalizedString.FromResource(() => ItemNames.WingsOfAnnihilation), 170, CharacterClasses.DuelMaster, this.BuildOptions((0b00, OptionType.HealthRecover), (0b11, OptionType.PhysDamage), (0b10, OptionType.WizDamage)), thirdWingOptions),
+            this.CreateFourthWing(418, 2, LocalizedString.FromResource(() => ItemNames.CloakOfDominator), 155, CharacterClasses.LordEmperor, this.BuildOptions((0b00, OptionType.HealthRecover), (0b11, OptionType.PhysDamage), (0b10, OptionType.Defense)), thirdWingOptions),
+            this.CreateFourthWing(419, 4, LocalizedString.FromResource(() => ItemNames.WingsOfOtherWorld), 170, CharacterClasses.DimensionMaster, this.BuildOptions((0b00, OptionType.HealthRecover), (0b11, OptionType.WizDamage), (0b10, OptionType.CurseDamage)), thirdWingOptions),
+            this.CreateFourthWing(420, 2, LocalizedString.FromResource(() => ItemNames.CloakOfJudgment), 170, CharacterClasses.FistMaster, this.BuildOptions((0b00, OptionType.HealthRecover), (0b11, OptionType.PhysDamage), (0b10, OptionType.Defense)), thirdWingOptions),
+            this.CreateFourthWing(421, 2, LocalizedString.FromResource(() => ItemNames.CloakOfIsolation), 170, CharacterClasses.FistMaster, this.BuildOptions((0b00, OptionType.HealthRecover), (0b11, OptionType.PhysDamage), (0b10, OptionType.Defense)), thirdWingOptions),
+        };
+
+        return created.OfType<ItemDefinition>().ToList();
+    }
+
+    private ItemDefinition? CreateFourthWing(short number, byte width, LocalizedString name, int defense, CharacterClasses characterClasses, IEnumerable<IncreasableItemOption> possibleOptions, ItemOptionDefinition thirdWingOptions, float movementSpeed = MovementSpeedConstants.DefaultWingMovementSpeed)
+    {
+        if (this.GameConfiguration.Items.Any(item => item.Group == 12 && item.Number == number))
+        {
+            return null;
+        }
+
+        return this.CreateWing(number, width, 3, name, 153, defense, 220, 400, characterClasses, possibleOptions, FourthWingDamageIncrease, FourthWingDamageAbsorb, this._damageIncreaseByLevelTable!, thirdWingOptions, movementSpeed);
     }
 
     private ItemDefinition? CreateSmallWing(byte number, byte width, byte height, LocalizedString name, int defense, CharacterClasses characterClasses, int damageIncreaseAndAbsorbInitial)
@@ -321,6 +394,14 @@ public class Wings : WingsInitializerBase
             263 => LocalizedString.FromResource(() => ItemOptionNames.WingsOfChaosOptions),
             264 => LocalizedString.FromResource(() => ItemOptionNames.WingsOfMagicOptions),
             265 => LocalizedString.FromResource(() => ItemOptionNames.WingsOfLifeOptions),
+            414 => LocalizedString.FromResource(() => ItemOptionNames.WingsOfElysiumOptions),
+            415 => LocalizedString.FromResource(() => ItemOptionNames.WingsOfFlameGodOptions),
+            416 => LocalizedString.FromResource(() => ItemOptionNames.WingOfCelestialBodyOptions),
+            417 => LocalizedString.FromResource(() => ItemOptionNames.WingsOfAnnihilationOptions),
+            418 => LocalizedString.FromResource(() => ItemOptionNames.CloakOfDominatorOptions),
+            419 => LocalizedString.FromResource(() => ItemOptionNames.WingsOfOtherWorldOptions),
+            420 => LocalizedString.FromResource(() => ItemOptionNames.CloakOfJudgmentOptions),
+            421 => LocalizedString.FromResource(() => ItemOptionNames.CloakOfIsolationOptions),
             _ => new LocalizedString($"{name.ValueInNeutralLanguage} Options"),
         };
         optionDefinition.AddChance = 0.25f;

@@ -794,6 +794,12 @@
   <data name="AddMonsterWingsUpdatePlugIn_Description" xml:space="preserve">
     <value>Diese Aktualisierung fügt die Monsterflügel hinzu: Cloak of Death, Wings of Chaos, Wings of Magic und Wings of Life. Vorhandene Gegenstände mit denselben Nummern bleiben unverändert.</value>
   </data>
+  <data name="AddFourthWingsUpdatePlugIn_Name" xml:space="preserve">
+    <value>Flügel der vierten Stufe hinzufügen</value>
+  </data>
+  <data name="AddFourthWingsUpdatePlugIn_Description" xml:space="preserve">
+    <value>Diese Aktualisierung fügt die Flügel der vierten Stufe aus Season 13 hinzu: Wings of Elysium, Wings of Flame God, Wing of Celestial Body, Wings of Annihilation, Cloak of Dominator, Wings of Other World, Cloak of Judgment und Cloak of Isolation. Vorhandene Gegenstände mit denselben Nummern bleiben unverändert.</value>
+  </data>
   <data name="FixDinorantOptionNumbersPlugIn_Name" xml:space="preserve">
     <value>Korrektur der Optionsnummern des Dinorant</value>
   </data>

@@ -1324,6 +1324,24 @@ namespace MUnique.OpenMU.Persistence.Initialization.Properties {
                 return ResourceManager.GetString("AddMonsterWingsUpdatePlugIn_Description", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Add fourth wings.
+        /// </summary>
+        public static string AddFourthWingsUpdatePlugIn_Name {
+            get {
+                return ResourceManager.GetString("AddFourthWingsUpdatePlugIn_Name", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to This update adds the fourth wings of season 13: Wings of Elysium, Wings of Flame God, Wing of Celestial Body, Wings of Annihilation, Cloak of Dominator, Wings of Other World, Cloak of Judgment and Cloak of Isolation. Existing items with the same numbers are left unchanged..
+        /// </summary>
+        public static string AddFourthWingsUpdatePlugIn_Description {
+            get {
+                return ResourceManager.GetString("AddFourthWingsUpdatePlugIn_Description", resourceCulture);
+            }
+        }
         
         /// <summary>
         ///   Looks up a localized string similar to Socket count tables.
